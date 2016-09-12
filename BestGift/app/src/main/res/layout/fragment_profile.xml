@@ -1,9 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:text="444"/>
+    android:background="#fff"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@mipmap/bg_profile">
+
+        <ImageView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="13dp"
+            android:src="@mipmap/icon_message" />
+
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/message"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/me_settings" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/setting"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/setting"
+            android:padding="4dp"
+            android:src="@mipmap/ic_toolkit_zebra_scanner" />
+
+        <ImageView
+            android:id="@+id/boy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/me_avatar_boy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/boy"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:text="请登录"
+            android:textColor="#fff" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_cart"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#000"
+            android:text="购物车" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_order"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#000"
+            android:text="订单" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_coupon"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#000"
+            android:text="礼券" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_follow"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#000"
+            android:text="关注" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_service"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#000"
+            android:text="客服" />
+
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/profile_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/profile_single"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:text="单品"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/profile_rb_shape"
+            android:textSize="20sp"/>
+
+        <RadioButton
+            android:id="@+id/profile_strategy"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="攻略"
+            android:background="@drawable/profile_rb_shape"
+            android:textSize="20sp"
+            />
+    </RadioGroup>
+
+
+
+    <FrameLayout
+        android:id="@+id/profile_fl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
+
 </LinearLayout>

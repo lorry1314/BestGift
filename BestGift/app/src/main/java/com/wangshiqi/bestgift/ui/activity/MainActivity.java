@@ -5,10 +5,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.wangshiqi.bestgift.R;
-import com.wangshiqi.bestgift.ui.fragment.FragmentCategory;
-import com.wangshiqi.bestgift.ui.fragment.FragmentGift;
-import com.wangshiqi.bestgift.ui.fragment.FragmentHomepage;
-import com.wangshiqi.bestgift.ui.fragment.FragmentProfile;
+import com.wangshiqi.bestgift.ui.fragment.Gift.FragmentGift;
+import com.wangshiqi.bestgift.ui.fragment.category.FragmentCategory;
+import com.wangshiqi.bestgift.ui.fragment.homepage.FragmentHomepage;
+import com.wangshiqi.bestgift.ui.fragment.profile.FragmentProfile;
 
 public class MainActivity extends AbsBaseActivity {
 
@@ -25,7 +25,7 @@ public class MainActivity extends AbsBaseActivity {
 
     @Override
     protected void initViews() {
-        radioGroup = (RadioGroup) findViewById(R.id.main_radio_group);
+        radioGroup = byView(R.id.main_radio_group);
 
     }
 

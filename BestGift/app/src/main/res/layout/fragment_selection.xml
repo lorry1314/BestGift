@@ -6,12 +6,13 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
+        android:gravity="center"
         android:text="轮播图"
         />
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:orientation="horizontal">
 
     </android.support.v7.widget.RecyclerView>
@@ -21,12 +22,15 @@
         android:gravity="center"
         android:text="日期和下次更新"/>
     <ListView
+        android:id="@+id/selection_lv"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:divider="#9d9d9d"
         android:dividerHeight="2dp"
         android:scrollbars="none">
+
+
 
     </ListView>
 </LinearLayout>
