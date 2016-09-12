@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,7 +89,6 @@ public class FragmentHomepage extends AbsFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.homepage_downIv:
-                Log.d("FragmentHomepage", "xxx");
                 showWindow();
                 break;
         }
