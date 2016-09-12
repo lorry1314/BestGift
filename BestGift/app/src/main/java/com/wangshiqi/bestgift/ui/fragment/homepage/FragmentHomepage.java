@@ -48,24 +48,36 @@ public class FragmentHomepage extends AbsFragment implements View.OnClickListene
 
     @Override
     protected void initDatas() {
-        List<Fragment> datas = new ArrayList<>();
-        datas.add(new FragmentSelection());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        datas.add(new FragmentGiftForGirl());
-        homepageAdapter = new HomepageAdapter(getChildFragmentManager(), datas);
+        addFragments();
         homepageVp.setAdapter(homepageAdapter);
         homepageTb.setupWithViewPager(homepageVp);
 
+        // 设置TabLayout标签数据
+        homepageTbSet();
+
+        downIv.setOnClickListener(this);
+
+    }
+
+    private void addFragments() {
+        List<Fragment> datas = new ArrayList<>();
+        datas.add(FragmentSelection.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(FragmentGiftForGirl.newInstance());
+        homepageAdapter = new HomepageAdapter(getChildFragmentManager(), datas);
+    }
+
+    private void homepageTbSet() {
         homepageTb.getTabAt(0).setText("精选");
         homepageTb.getTabAt(1).setText("送女票");
         homepageTb.getTabAt(2).setText("海淘");
@@ -80,9 +92,6 @@ public class FragmentHomepage extends AbsFragment implements View.OnClickListene
         homepageTb.getTabAt(11).setText("科技范");
         homepageTb.getTabAt(12).setText("萌萌哒");
         homepageTb.setTabMode(TabLayout.MODE_SCROLLABLE);
-
-        downIv.setOnClickListener(this);
-
     }
 
     @Override

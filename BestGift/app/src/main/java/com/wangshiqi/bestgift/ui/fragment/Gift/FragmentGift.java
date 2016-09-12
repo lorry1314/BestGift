@@ -31,10 +31,11 @@ public class FragmentGift extends AbsFragment {
     @Override
     protected void initDatas() {
         List<Fragment> datas = new ArrayList<>();
-        datas.add(new FragmentDaily());
-        datas.add(new FragmentTop100());
-        datas.add(new FragmentOriginal());
-        datas.add(new FragmentNewStar());
+        datas.add(FragmentDaily.newInstance());
+        datas.add(FragmentDaily.newInstance());
+        datas.add(FragmentDaily.newInstance());
+        datas.add(FragmentDaily.newInstance());
+
         giftAdapter = new GiftAdapter(getChildFragmentManager(), datas);
         giftViewPager.setAdapter(giftAdapter);
         giftTabLayout.setupWithViewPager(giftViewPager);
