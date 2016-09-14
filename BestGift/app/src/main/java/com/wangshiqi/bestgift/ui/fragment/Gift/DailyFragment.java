@@ -1,4 +1,4 @@
-package com.wangshiqi.bestgift.ui.fragment.Gift;
+package com.wangshiqi.bestgift.ui.fragment.gift;
 
 import android.os.Bundle;
 
@@ -7,13 +7,14 @@ import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
 /**
  * Created by dllo on 16/9/9.
+ * 每日推荐(复用)
  */
-public class FragmentDaily extends AbsFragment {
-    public static FragmentDaily newInstance() {
+public class DailyFragment extends AbsFragment {
+    public static DailyFragment newInstance() {
         
         Bundle args = new Bundle();
         
-        FragmentDaily fragment = new FragmentDaily();
+        DailyFragment fragment = new DailyFragment();
         fragment.setArguments(args);
         return fragment;
     }

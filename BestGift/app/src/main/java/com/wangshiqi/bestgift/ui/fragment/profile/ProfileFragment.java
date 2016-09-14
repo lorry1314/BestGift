@@ -1,5 +1,6 @@
 package com.wangshiqi.bestgift.ui.fragment.profile;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
@@ -9,14 +10,23 @@ import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
 /**
  * - Created by dllo on 16/9/8.
+ * 个人界面
  */
-public class FragmentProfile extends AbsFragment {
+public class ProfileFragment extends AbsFragment {
 
 
     private RadioGroup radioGroup;
-    private FragmentProfileSingle fragmentProfileSingle;
-    private FragmentProfileStrategy fragmentProfileStrategy;
+    private ProfileSingleFragment fragmentProfileSingle;
+    private ProfileStrategyFragment fragmentProfileStrategy;
 
+    public static ProfileFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        ProfileFragment fragment = new ProfileFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setLayout() {
         return R.layout.fragment_profile;
@@ -29,8 +39,8 @@ public class FragmentProfile extends AbsFragment {
 
     @Override
     protected void initDatas() {
-        fragmentProfileSingle = new FragmentProfileSingle();
-        fragmentProfileStrategy = new FragmentProfileStrategy();
+        fragmentProfileSingle = new ProfileSingleFragment();
+        fragmentProfileStrategy = new ProfileStrategyFragment();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

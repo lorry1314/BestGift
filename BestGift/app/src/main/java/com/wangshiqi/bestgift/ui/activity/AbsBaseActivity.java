@@ -29,7 +29,6 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      *
      - @return R.layout.xx
      */
-
     protected abstract int setLayout();
 
     /**

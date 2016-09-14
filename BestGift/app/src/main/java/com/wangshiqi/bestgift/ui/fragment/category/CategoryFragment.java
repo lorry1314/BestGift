@@ -1,5 +1,6 @@
 package com.wangshiqi.bestgift.ui.fragment.category;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -14,11 +15,21 @@ import java.util.List;
 /**
 
  - Created by dllo on 16/9/8.
+ * 分类界面
  */
-public class FragmentCategory extends AbsFragment {
+public class CategoryFragment extends AbsFragment {
     private ViewPager categoryVp;
     private TabLayout categoryTb;
     private CategoryAdapter categoryAdapter;
+
+    public static CategoryFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        CategoryFragment fragment = new CategoryFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setLayout() {
         return R.layout.fragment_category;
@@ -31,8 +42,8 @@ public class FragmentCategory extends AbsFragment {
     @Override
     protected void initDatas() {
         List<Fragment> datas = new ArrayList<>();
-        datas.add(new FragmentCategoryStrategy());
-        datas.add(new FragmentCategorySingle());
+        datas.add(new CategoryStrategyFragment());
+        datas.add(new CategorySingleFragment());
         categoryAdapter = new CategoryAdapter(getChildFragmentManager(), datas);
         categoryVp.setAdapter(categoryAdapter);
         categoryTb.setupWithViewPager(categoryVp);

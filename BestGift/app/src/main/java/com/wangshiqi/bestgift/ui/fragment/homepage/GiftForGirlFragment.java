@@ -7,13 +7,14 @@ import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
 /**
  * Created by dllo on 16/9/9.
+ * 送女票(后面开始复用)
  */
-public class FragmentGiftForGirl extends AbsFragment {
-    public static FragmentGiftForGirl newInstance() {
+public class GiftForGirlFragment extends AbsFragment {
+    public static GiftForGirlFragment newInstance() {
         
         Bundle args = new Bundle();
         
-        FragmentGiftForGirl fragment = new FragmentGiftForGirl();
+        GiftForGirlFragment fragment = new GiftForGirlFragment();
         fragment.setArguments(args);
         return fragment;
     }

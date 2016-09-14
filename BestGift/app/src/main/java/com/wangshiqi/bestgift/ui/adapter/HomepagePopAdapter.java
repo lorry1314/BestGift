@@ -56,7 +56,6 @@ public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.
         public MyViewHolder(View itemView) {
             super(itemView);
             popBtn = (Button) itemView.findViewById(R.id.item_pop_btn);
-//            popBtn = (RadioButton) itemView.findViewById(R.id.item_pop_btn);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.wangshiqi.bestgift.ui.fragment.homepage;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -16,14 +17,16 @@ import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.ui.adapter.HomepageAdapter;
 import com.wangshiqi.bestgift.ui.adapter.HomepagePopAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
+import com.wangshiqi.bestgift.utils.ScreanSizeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * - Created by dllo on 16/9/8.
+ * 首页
  */
-public class FragmentHomepage extends AbsFragment implements View.OnClickListener {
+public class HomepageFragment extends AbsFragment implements View.OnClickListener {
     private ViewPager homepageVp;
     private TabLayout homepageTb;
     private HomepageAdapter homepageAdapter;
@@ -32,7 +35,14 @@ public class FragmentHomepage extends AbsFragment implements View.OnClickListene
     private RecyclerView popRv;
     private HomepagePopAdapter homepagePopAdapter;
 
+    public static HomepageFragment newInstance() {
 
+        Bundle args = new Bundle();
+
+        HomepageFragment fragment = new HomepageFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setLayout() {
         return R.layout.fragment_homepage;
@@ -61,19 +71,19 @@ public class FragmentHomepage extends AbsFragment implements View.OnClickListene
 
     private void addFragments() {
         List<Fragment> datas = new ArrayList<>();
-        datas.add(FragmentSelection.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
-        datas.add(FragmentGiftForGirl.newInstance());
+        datas.add(SelectionFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance());
         homepageAdapter = new HomepageAdapter(getChildFragmentManager(), datas);
     }
 
@@ -107,7 +117,7 @@ public class FragmentHomepage extends AbsFragment implements View.OnClickListene
     private void showWindow() {
         final PopupWindow pw = new PopupWindow(context);
         pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        pw.setHeight(450);
+        pw.setHeight(ScreanSizeUtil.getScreenHeight(context) * 4 / 10);
         View v = LayoutInflater.from(context).inflate(R.layout.homepage_popup, null);
         popRv = (RecyclerView) v.findViewById(R.id.pop_rv);
         pw.setFocusable(true);

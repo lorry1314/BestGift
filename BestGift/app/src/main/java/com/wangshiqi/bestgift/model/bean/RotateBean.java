@@ -4,12 +4,18 @@ import java.io.Serializable;
 
 /**
  * Created by dllo on 16/9/12.
+ *
  */
 public class RotateBean implements Serializable{
     private int imgId;
     private String imgUrl;
 
     public RotateBean() {
+    }
+
+    public RotateBean(int imgId, String imgUrl) {
+        this.imgId = imgId;
+        this.imgUrl = imgUrl;
     }
 
     public RotateBean(int imgId) {

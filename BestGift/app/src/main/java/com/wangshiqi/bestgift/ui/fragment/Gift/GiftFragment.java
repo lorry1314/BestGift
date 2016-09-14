@@ -1,5 +1,6 @@
-package com.wangshiqi.bestgift.ui.fragment.Gift;
+package com.wangshiqi.bestgift.ui.fragment.gift;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -13,12 +14,22 @@ import java.util.List;
 
 /**
 
- - Created by dllo on 16/9/8.
+ *- Created by dllo on 16/9/8.
+ * 榜单页面
  */
-public class FragmentGift extends AbsFragment {
+public class GiftFragment extends AbsFragment {
     private TabLayout giftTabLayout;
     private ViewPager giftViewPager;
     private GiftAdapter giftAdapter;
+
+    public static GiftFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        GiftFragment fragment = new GiftFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int setLayout() {
         return R.layout.fragment_gift;
@@ -31,10 +42,10 @@ public class FragmentGift extends AbsFragment {
     @Override
     protected void initDatas() {
         List<Fragment> datas = new ArrayList<>();
-        datas.add(FragmentDaily.newInstance());
-        datas.add(FragmentDaily.newInstance());
-        datas.add(FragmentDaily.newInstance());
-        datas.add(FragmentDaily.newInstance());
+        datas.add(DailyFragment.newInstance());
+        datas.add(DailyFragment.newInstance());
+        datas.add(DailyFragment.newInstance());
+        datas.add(DailyFragment.newInstance());
 
         giftAdapter = new GiftAdapter(getChildFragmentManager(), datas);
         giftViewPager.setAdapter(giftAdapter);

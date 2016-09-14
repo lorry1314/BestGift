@@ -1,15 +1,16 @@
-package com.wangshiqi.bestgift.ui.fragment.profile;
+package com.wangshiqi.bestgift.ui.fragment.category;
 
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 攻略
  */
-public class FragmentProfileSingle extends AbsFragment {
+public class CategoryStrategyFragment extends AbsFragment {
     @Override
     protected int setLayout() {
-        return R.layout.fragment_profile_single;
+        return R.layout.fragment_category_strategy;
     }
 
     @Override

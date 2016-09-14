@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.RotateBean;
 
@@ -60,8 +61,8 @@ public class SelectionVpAdapter extends PagerAdapter {
        // position是int最大值所以这里可能是几百甚至上千, 因此取余避免数组越界
         int newPosition = position % datas.size();
         View convertView = inflater.inflate(R.layout.item_selection_vp, container, false);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.item_iv);
-        imageView.setImageResource(datas.get(newPosition).getImgId());
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.item_rotate_iv);
+        Picasso.with(context).load(datas.get(newPosition).getImgUrl()).into(imageView);
         container.addView(convertView);
         return convertView;
     }

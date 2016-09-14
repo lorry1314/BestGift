@@ -5,8 +5,9 @@ import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 单品
  */
-public class FragmentCategorySingle extends AbsFragment {
+public class CategorySingleFragment extends AbsFragment {
     @Override
     protected int setLayout() {
         return R.layout.fragment_category_single;

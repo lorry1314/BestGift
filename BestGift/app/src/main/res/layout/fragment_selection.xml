@@ -25,17 +25,19 @@
 
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/selection_rv"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="horizontal">
+        >
 
     </android.support.v7.widget.RecyclerView>
 
     <TextView
+        android:id="@+id/selection_tv"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:gravity="center"
-        android:text="日期和下次更新" />
+        />
 
     <ListView
         android:id="@+id/selection_lv"

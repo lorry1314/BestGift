@@ -5,18 +5,18 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.wangshiqi.bestgift.R;
-import com.wangshiqi.bestgift.ui.fragment.Gift.FragmentGift;
-import com.wangshiqi.bestgift.ui.fragment.category.FragmentCategory;
-import com.wangshiqi.bestgift.ui.fragment.homepage.FragmentHomepage;
-import com.wangshiqi.bestgift.ui.fragment.profile.FragmentProfile;
+import com.wangshiqi.bestgift.ui.fragment.gift.GiftFragment;
+import com.wangshiqi.bestgift.ui.fragment.category.CategoryFragment;
+import com.wangshiqi.bestgift.ui.fragment.homepage.HomepageFragment;
+import com.wangshiqi.bestgift.ui.fragment.profile.ProfileFragment;
 
 public class MainActivity extends AbsBaseActivity {
 
     private RadioGroup radioGroup;
-    private FragmentHomepage fragmentHomepage;
-    private FragmentGift fragmentGift;
-    private FragmentCategory fragmentCategory;
-    private FragmentProfile fragmentProfile;
+    private HomepageFragment fragmentHomepage;
+    private GiftFragment fragmentGift;
+    private CategoryFragment fragmentCategory;
+    private ProfileFragment fragmentProfile;
 
     @Override
     protected int setLayout() {
@@ -31,10 +31,7 @@ public class MainActivity extends AbsBaseActivity {
 
     @Override
     protected void initDatas() {
-        fragmentHomepage = new FragmentHomepage();
-        fragmentGift = new FragmentGift();
-        fragmentCategory = new FragmentCategory();
-        fragmentProfile = new FragmentProfile();
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -42,16 +39,16 @@ public class MainActivity extends AbsBaseActivity {
                 FragmentTransaction transaction = manager.beginTransaction();
                 switch (checkedId) {
                     case R.id.homepage_rb:
-                        transaction.replace(R.id.replace_view, fragmentHomepage);
+                        transaction.replace(R.id.replace_view, fragmentHomepage.newInstance());
                         break;
                     case R.id.gift_rb:
-                        transaction.replace(R.id.replace_view, fragmentGift);
+                        transaction.replace(R.id.replace_view, fragmentGift.newInstance());
                         break;
                     case R.id.category_rb:
-                        transaction.replace(R.id.replace_view, fragmentCategory);
+                        transaction.replace(R.id.replace_view, fragmentCategory.newInstance());
                         break;
                     case R.id.profile_rb:
-                        transaction.replace(R.id.replace_view, fragmentProfile);
+                        transaction.replace(R.id.replace_view, fragmentProfile.newInstance());
                         break;
                 }
                 transaction.commit();
