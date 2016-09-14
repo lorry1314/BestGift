@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.wangshiqi.bestgift.R;
+import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.ui.adapter.HomepageAdapter;
 import com.wangshiqi.bestgift.ui.adapter.HomepagePopAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
@@ -72,18 +73,18 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     private void addFragments() {
         List<Fragment> datas = new ArrayList<>();
         datas.add(SelectionFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
-        datas.add(GiftForGirlFragment.newInstance());
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.GIVEGILRFRIEND));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.BOARD_SHOPPING));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.IDEA_FOR_LIFE));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.GIVE_BOYFRIEND));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.GIVE_PARENT));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.GIVE_COLLEGUE));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.GIVE_BABY));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.DESIGN_FEELS));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.ART_WIND));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.THE_EXIOC));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.FAN_SENCISE));
+        datas.add(GiftForGirlFragment.newInstance(NetUrl.KAWAYI));
         homepageAdapter = new HomepageAdapter(getChildFragmentManager(), datas);
     }
 

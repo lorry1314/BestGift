@@ -11,13 +11,17 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.wangshiqi.bestgift.R;
+import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
 import com.wangshiqi.bestgift.model.bean.RotateBean;
 import com.wangshiqi.bestgift.model.bean.SelectionRvBean;
+import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
 import com.wangshiqi.bestgift.model.net.VolleyResult;
+import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionRvAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionVpAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
+import com.wangshiqi.bestgift.view.SelectionListView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,26 +33,26 @@ import java.util.List;
  * Created by dllo on 16/9/9.
  * 精选页面
  */
-public class SelectionFragment extends AbsFragment implements VolleyResult {
+public class SelectionFragment extends AbsFragment {
     private static final int TIME = 3000;
     private ViewPager viewPager;
     private LinearLayout pointLl;
     private List<RotateBean> datas;
     private SelectionVpAdapter vpAdapter;
 
-    private String imgUrl1 ="http://img02.liwushuo.com/image/160907/2e7nf9evv.jpg-w720";
-    private String imgUrl2 ="http://img01.liwushuo.com/image/160912/w27nffhwn.jpg-w720";
-    private String imgUrl3 ="http://img03.liwushuo.com/image/160912/oc9jytqbo.jpg-w720";
-    private String imgUrl4 ="http://img01.liwushuo.com/image/160906/4aco2fhmd.jpg-w720";
-    private String imgUrl5 ="http://img01.liwushuo.com/image/160908/a0h3m4p1p.jpg-w720";
-    private String imgUrl6 ="http://img01.liwushuo.com/image/160901/2sm8iy4n4.jpg-w720";
-    private String imgUrl7 ="http://img01.liwushuo.com/image/160905/sfgmt79zc.jpg-w720";
+
+
+
 
 
     private RecyclerView recyclerView;
     private SelectionRvAdapter selectionRvAdapter;
-    private static final String URL = "http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
+
     private TextView timeTv;
+
+    private SelectionListView selectionLv;
+    private GiftForGirlAdapter selectionLvAdapter;
+
 
 
     public static SelectionFragment newInstance() {
@@ -71,13 +75,13 @@ public class SelectionFragment extends AbsFragment implements VolleyResult {
         pointLl = byView(R.id.rotate_poiont_container);
         recyclerView = byView(R.id.selection_rv);
         timeTv = byView(R.id.selection_tv);
+        selectionLv = byView(R.id.selection_lv);
     }
 
     @Override
     protected void initDatas() {
+        // 轮播图数据
         buildDatas();
-
-
         vpAdapter = new SelectionVpAdapter(datas, context);
         viewPager.setAdapter(vpAdapter);
         // ViewPager的页数为int最大值,设置当前页多一些,可以上来就向前滑动
@@ -93,14 +97,44 @@ public class SelectionFragment extends AbsFragment implements VolleyResult {
 
         // 横向recyclerview
         selectionRvAdapter = new SelectionRvAdapter(context);
-        VolleyInstance.getInstance().startRequest(URL, this);
+        VolleyInstance.getInstance().startRequest(NetUrl.URLRV, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                SelectionRvBean selectionRvBean = gson.fromJson(resultStr, SelectionRvBean.class);
+                List<SelectionRvBean.DataBean.SecondaryBannersBean> rvDatas = selectionRvBean.getData().getSecondary_banners();
+                selectionRvAdapter.setDatas(rvDatas);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
         recyclerView.setAdapter(selectionRvAdapter);
-        LinearLayoutManager manager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
 
         // 时间
         timeAndUpdate();
 
+        // ListView
+        selectionLvAdapter = new GiftForGirlAdapter(context);
+        VolleyInstance.getInstance().startRequest(NetUrl.URLLV, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                GiftForGilrBean bean = gson.fromJson(resultStr, GiftForGilrBean.class);
+                List<GiftForGilrBean.DataBean.ItemsBean> datas = bean.getData().getItems();
+                selectionLvAdapter.setDatas(datas);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+        selectionLv.setAdapter(selectionLvAdapter);
     }
 
     private void timeAndUpdate() {
@@ -124,7 +158,7 @@ public class SelectionFragment extends AbsFragment implements VolleyResult {
         } else if ("7".equals(week)) {
             week = "星期六";
         }
-        timeTv.setText("-------   " + str + " " + week + "   --------");
+        timeTv.setText("--------   " + str + " " + week + "   --------");
     }
 
     private void changePoints() {
@@ -165,7 +199,7 @@ public class SelectionFragment extends AbsFragment implements VolleyResult {
             // 设置第0页标识点为灰色
             if (i == 0) {
                 poiontIv.setImageResource(R.mipmap.point);
-            }else {
+            } else {
                 poiontIv.setImageResource(R.mipmap.dispoint);
             }
             pointLl.addView(poiontIv);
@@ -206,30 +240,15 @@ public class SelectionFragment extends AbsFragment implements VolleyResult {
     private void buildDatas() {
 
         datas = new ArrayList<>();
-        datas.add(new RotateBean(imgUrl1));
-        datas.add(new RotateBean(imgUrl2));
-        datas.add(new RotateBean(imgUrl3));
-        datas.add(new RotateBean(imgUrl4));
-        datas.add(new RotateBean(imgUrl5));
-        datas.add(new RotateBean(imgUrl6));
-        datas.add(new RotateBean(imgUrl7));
-
-
-    }
-
-
-
-
-    @Override
-    public void success(String resultStr) {
-        Gson gson = new Gson();
-        SelectionRvBean selectionRvBean = gson.fromJson(resultStr, SelectionRvBean.class);
-        List<SelectionRvBean.DataBean.SecondaryBannersBean> rvDatas = selectionRvBean.getData().getSecondary_banners();
-        selectionRvAdapter.setDatas(rvDatas);
-    }
-
-    @Override
-    public void failure() {
+        datas.add(new RotateBean(NetUrl.IMGURL1));
+        datas.add(new RotateBean(NetUrl.IMGURL2));
+        datas.add(new RotateBean(NetUrl.IMGURL3));
+        datas.add(new RotateBean(NetUrl.IMGURL4));
+        datas.add(new RotateBean(NetUrl.IMGURL5));
+        datas.add(new RotateBean(NetUrl.IMGURL6));
+        datas.add(new RotateBean(NetUrl.IMGURL7));
 
     }
+
+
 }
