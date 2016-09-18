@@ -40,4 +40,13 @@ public class NetUrl {
     public static final String URLRV = "http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2";
     // 精选页面LV
     public static final String URLLV = "http://api.liwushuo.com/v2/channels/101/items_v2?ad=2&gender=1&generation=2&limit=20&offset=0";
+    // 每日推荐
+    public static final String URLDAILY = "http://api.liwushuo.com/v2/ranks_v2/ranks/1?limit=20&offset=0";
+    // TOP100
+    public static final String TOP100 = "http://api.liwushuo.com/v2/ranks_v2/ranks/2?limit=20&offset=0";
+    // 独立原创
+    public static final String ORIGINAL = "http://api.liwushuo.com/v2/ranks_v2/ranks/3?limit=20&offset=0";
+    // 新星榜
+    public static final String NEWSTAR = "http://api.liwushuo.com/v2/ranks_v2/ranks/4?limit=20&offset=0";
+
 }

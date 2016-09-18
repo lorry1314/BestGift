@@ -41,7 +41,7 @@
             android:textSize="16sp" />
 
 
-        <com.wangshiqi.bestgift.view.CirlcleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/list_author_avatar_img"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -52,8 +52,9 @@
 
     <ImageView
         android:id="@+id/list_cover_img"
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"

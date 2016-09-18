@@ -13,11 +13,6 @@ import com.wangshiqi.bestgift.ui.fragment.profile.ProfileFragment;
 public class MainActivity extends AbsBaseActivity {
 
     private RadioGroup radioGroup;
-    private HomepageFragment fragmentHomepage;
-    private GiftFragment fragmentGift;
-    private CategoryFragment fragmentCategory;
-    private ProfileFragment fragmentProfile;
-
     @Override
     protected int setLayout() {
         return R.layout.activity_main;
@@ -39,16 +34,16 @@ public class MainActivity extends AbsBaseActivity {
                 FragmentTransaction transaction = manager.beginTransaction();
                 switch (checkedId) {
                     case R.id.homepage_rb:
-                        transaction.replace(R.id.replace_view, fragmentHomepage.newInstance());
+                        transaction.replace(R.id.replace_view, HomepageFragment.newInstance());
                         break;
                     case R.id.gift_rb:
-                        transaction.replace(R.id.replace_view, fragmentGift.newInstance());
+                        transaction.replace(R.id.replace_view, GiftFragment.newInstance());
                         break;
                     case R.id.category_rb:
-                        transaction.replace(R.id.replace_view, fragmentCategory.newInstance());
+                        transaction.replace(R.id.replace_view, CategoryFragment.newInstance());
                         break;
                     case R.id.profile_rb:
-                        transaction.replace(R.id.replace_view, fragmentProfile.newInstance());
+                        transaction.replace(R.id.replace_view, ProfileFragment.newInstance());
                         break;
                 }
                 transaction.commit();

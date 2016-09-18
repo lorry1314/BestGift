@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.wangshiqi.bestgift.R;
+import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.ui.adapter.GiftAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
@@ -42,10 +43,10 @@ public class GiftFragment extends AbsFragment {
     @Override
     protected void initDatas() {
         List<Fragment> datas = new ArrayList<>();
-        datas.add(DailyFragment.newInstance());
-        datas.add(DailyFragment.newInstance());
-        datas.add(DailyFragment.newInstance());
-        datas.add(DailyFragment.newInstance());
+        datas.add(DailyFragment.newInstance(NetUrl.URLDAILY));
+        datas.add(DailyFragment.newInstance(NetUrl.TOP100));
+        datas.add(DailyFragment.newInstance(NetUrl.ORIGINAL));
+        datas.add(DailyFragment.newInstance(NetUrl.NEWSTAR));
 
         giftAdapter = new GiftAdapter(getChildFragmentManager(), datas);
         giftViewPager.setAdapter(giftAdapter);

@@ -11,9 +11,11 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
-import com.wangshiqi.bestgift.view.CirlcleImageView;
+import com.wangshiqi.bestgift.utils.ScreanSizeUtil;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/9/14.
@@ -63,6 +65,7 @@ public class GiftForGirlAdapter extends BaseAdapter {
         viewHolder.titleTv.setText(bean.getTitle());
         viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
         Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(viewHolder.authorAvatorImg);
+        viewHolder.coverImg.setMinimumWidth(ScreanSizeUtil.getScreeanWidth(context));
         Picasso.with(context).load(bean.getCover_image_url()).into(viewHolder.coverImg);
         return convertView;
     }
@@ -70,7 +73,7 @@ public class GiftForGirlAdapter extends BaseAdapter {
     class ViewHolder {
         TextView categoryTv, columnTitleTv, nickNameTv, titleTv, likesCountTv;
         ImageView  coverImg;
-        CirlcleImageView authorAvatorImg;
+        CircleImageView authorAvatorImg;
 
         public ViewHolder(View view) {
             categoryTv = (TextView) view.findViewById(R.id.list_category_tv);
@@ -78,7 +81,7 @@ public class GiftForGirlAdapter extends BaseAdapter {
             nickNameTv = (TextView) view.findViewById(R.id.list_nickname_tv);
             titleTv = (TextView) view.findViewById(R.id.list_title_tv);
             likesCountTv = (TextView) view.findViewById(R.id.list_likescount_tv);
-            authorAvatorImg = (CirlcleImageView) view.findViewById(R.id.list_author_avatar_img);
+            authorAvatorImg = (CircleImageView) view.findViewById(R.id.list_author_avatar_img);
             coverImg = (ImageView) view.findViewById(R.id.list_cover_img);
         }
     }

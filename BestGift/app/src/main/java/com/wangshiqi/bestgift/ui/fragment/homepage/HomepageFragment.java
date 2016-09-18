@@ -109,6 +109,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.homepage_downIv:
+                // popwindow弹出方法
                 showWindow();
                 break;
         }

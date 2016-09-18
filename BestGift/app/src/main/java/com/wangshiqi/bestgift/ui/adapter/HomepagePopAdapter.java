@@ -15,11 +15,7 @@ import java.util.List;
  * Created by dllo on 16/9/10.
  */
 public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.MyViewHolder> {
-
     private List<String> datas;
-
-
-
     private Context context;
 
     public HomepagePopAdapter(Context context) {
@@ -41,18 +37,19 @@ public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-            holder.popBtn.setText(datas.get(position));
+        holder.popBtn.setText(datas.get(position));
 
     }
-
 
 
     @Override
     public int getItemCount() {
         return datas != null && datas.size() > 0 ? datas.size() : 0;
     }
+
     class MyViewHolder extends RecyclerView.ViewHolder {
         private Button popBtn;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             popBtn = (Button) itemView.findViewById(R.id.item_pop_btn);
