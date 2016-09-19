@@ -8,8 +8,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
-
-
         <TextView
             android:id="@+id/list_category_tv"
             android:layout_width="wrap_content"
@@ -38,7 +36,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_margin="8dp"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -54,6 +52,7 @@
         android:id="@+id/list_cover_img"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
+        android:scaleType="centerCrop"
         />
 
     <RelativeLayout

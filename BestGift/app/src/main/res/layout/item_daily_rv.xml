@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="190dp"
+    android:layout_height="250dp"
+    android:id="@+id/daily_cv_item"
     app:cardCornerRadius="5dp"
     android:layout_margin="5dp"
     android:elevation="1dp"
@@ -14,38 +15,37 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/daily_iv"
+            android:id="@+id/daily_item_iv"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="150dp"
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/daily_short_description"
+            android:id="@+id/daily_item_short_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:textColor="#000"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/daily_name"
+            android:id="@+id/daily_item_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/daily_price"
+            android:id="@+id/daily_item_price"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:textColor="#ED2D44" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

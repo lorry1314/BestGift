@@ -10,7 +10,7 @@
         android:id="@+id/girl_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#9d9d9d"
+        android:divider="#e7e7e7"
         android:dividerHeight="5dp"
         android:scrollbars="none">
 

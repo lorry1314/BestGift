@@ -43,10 +43,16 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
         Picasso.with(context).load(bean.getCover_image_url()).into(holder.dailyIv);
         holder.dailyName.setText(bean.getName());
         holder.dailyDescription.setText(bean.getShort_description());
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(bean.getPrice());
-        stringBuffer.delete(bean.getPrice().length() - 3, bean.getPrice().length());
-        holder.dailyPrice.setText("¥ " + stringBuffer);
+        holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
+    }
+
+    // 去掉多余的0 和 小数点
+    public static String subZeroAndDot(String s) {
+        if (s.indexOf(".") > 0) {
+            s = s.replaceAll("0+?$", "");//去掉多余的0
+            s = s.replaceAll("[.]$", "");//如最后一位是"."则去掉
+        }
+        return s;
     }
 
     @Override
@@ -59,12 +65,13 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
 
         ImageView dailyIv;
         TextView dailyName, dailyDescription, dailyPrice;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            dailyIv = (ImageView) itemView.findViewById(R.id.daily_iv);
-            dailyDescription = (TextView) itemView.findViewById(R.id.daily_short_description);
-            dailyName = (TextView) itemView.findViewById(R.id.daily_name);
-            dailyPrice = (TextView) itemView.findViewById(R.id.daily_price);
+            dailyIv = (ImageView) itemView.findViewById(R.id.daily_item_iv);
+            dailyDescription = (TextView) itemView.findViewById(R.id.daily_item_short_description);
+            dailyName = (TextView) itemView.findViewById(R.id.daily_item_name);
+            dailyPrice = (TextView) itemView.findViewById(R.id.daily_item_price);
         }
     }
 }

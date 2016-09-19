@@ -42,16 +42,14 @@ public class DailyFragment extends AbsFragment implements VolleyResult {
 
     @Override
     protected void initView() {
-        dailyIv = byView(R.id.daily_iv);
         dailyRv = byView(R.id.daily_rv);
+        dailyIv = byView(R.id.daily_header_iv);
     }
 
     @Override
     protected void initDatas() {
         Bundle bundle = getArguments();
         String string = bundle.getString("url");
-
-
         dailyRvAdapter = new DailyRvAdapter(context);
         dailyRv.setAdapter(dailyRvAdapter);
         GridLayoutManager manager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);

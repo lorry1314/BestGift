@@ -37,13 +37,12 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     private HomepagePopAdapter homepagePopAdapter;
 
     public static HomepageFragment newInstance() {
-
         Bundle args = new Bundle();
-
         HomepageFragment fragment = new HomepageFragment();
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_homepage;
@@ -62,12 +61,8 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
         addFragments();
         homepageVp.setAdapter(homepageAdapter);
         homepageTb.setupWithViewPager(homepageVp);
-
-        // 设置TabLayout标签数据
-        homepageTbSet();
-
+        homepageTbSet(); // 设置TabLayout标签数据
         downIv.setOnClickListener(this);
-
     }
 
     private void addFragments() {
@@ -109,12 +104,10 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.homepage_downIv:
-                // popwindow弹出方法
-                showWindow();
+                showWindow(); // popwindow弹出方法
                 break;
         }
     }
-
 
     private void showWindow() {
         final PopupWindow pw = new PopupWindow(context);

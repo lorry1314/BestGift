@@ -55,5 +55,6 @@ public class GiftFragment extends AbsFragment {
         giftTabLayout.getTabAt(1).setText("TOP100");
         giftTabLayout.getTabAt(2).setText("独立原创");
         giftTabLayout.getTabAt(3).setText("新星榜");
+
     }
 }

@@ -59,20 +59,32 @@ public class GiftForGirlAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         GiftForGilrBean.DataBean.ItemsBean bean = (GiftForGilrBean.DataBean.ItemsBean) getItem(position);
-        viewHolder.categoryTv.setText(bean.getColumn().getCategory());
-        viewHolder.columnTitleTv.setText(bean.getColumn().getTitle());
-        viewHolder.nickNameTv.setText(bean.getAuthor().getNickname());
-        viewHolder.titleTv.setText(bean.getTitle());
-        viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
-        Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(viewHolder.authorAvatorImg);
-        viewHolder.coverImg.setMinimumWidth(ScreanSizeUtil.getScreeanWidth(context));
-        Picasso.with(context).load(bean.getCover_image_url()).into(viewHolder.coverImg);
+        if (null != bean.getColumn() && null != bean.getColumn().getCategory()) {
+            viewHolder.categoryTv.setText(bean.getColumn().getCategory());
+            viewHolder.categoryTv.setVisibility(View.VISIBLE);
+            viewHolder.columnTitleTv.setText(bean.getColumn().getTitle());
+            viewHolder.nickNameTv.setText(bean.getAuthor().getNickname());
+            viewHolder.titleTv.setText(bean.getTitle());
+            viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
+            Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(viewHolder.authorAvatorImg);
+            viewHolder.coverImg.setMinimumWidth(ScreanSizeUtil.getScreeanWidth(context));
+            Picasso.with(context).load(bean.getCover_image_url()).into(viewHolder.coverImg);
+        }else {
+            viewHolder.categoryTv.setVisibility(View.INVISIBLE);
+            viewHolder.nickNameTv.setText(bean.getAuthor().getNickname());
+            viewHolder.titleTv.setText(bean.getTitle());
+            viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
+            Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(viewHolder.authorAvatorImg);
+            viewHolder.coverImg.setMinimumWidth(ScreanSizeUtil.getScreeanWidth(context));
+            Picasso.with(context).load(bean.getCover_image_url()).into(viewHolder.coverImg);
+        }
+
         return convertView;
     }
 
     class ViewHolder {
         TextView categoryTv, columnTitleTv, nickNameTv, titleTv, likesCountTv;
-        ImageView  coverImg;
+        ImageView coverImg;
         CircleImageView authorAvatorImg;
 
         public ViewHolder(View view) {

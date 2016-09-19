@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
-import com.wangshiqi.bestgift.model.bean.RotateBean;
+import com.wangshiqi.bestgift.model.bean.RotateImgBean;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * Created by dllo on 16/9/12.
  */
 public class SelectionVpAdapter extends PagerAdapter {
-    private List<RotateBean> datas;
+    private List<RotateImgBean.DataBean.BannersBean> datas;
     private Context context;
     private LayoutInflater inflater;
 
@@ -29,13 +29,13 @@ public class SelectionVpAdapter extends PagerAdapter {
         inflater = LayoutInflater.from(context);
     }
 
-    public SelectionVpAdapter(List<RotateBean> datas, Context context) {
+    public SelectionVpAdapter(List<RotateImgBean.DataBean.BannersBean> datas, Context context) {
         this.datas = datas;
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
-    public void setDatas(List<RotateBean> datas) {
+    public void setDatas(List<RotateImgBean.DataBean.BannersBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -62,7 +62,8 @@ public class SelectionVpAdapter extends PagerAdapter {
         int newPosition = position % datas.size();
         View convertView = inflater.inflate(R.layout.item_selection_vp, container, false);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.item_rotate_iv);
-        Picasso.with(context).load(datas.get(newPosition).getImgUrl()).into(imageView);
+        RotateImgBean.DataBean.BannersBean bean = datas.get(newPosition);
+        Picasso.with(context).load(bean.getImage_url()).into(imageView);
         container.addView(convertView);
         return convertView;
     }

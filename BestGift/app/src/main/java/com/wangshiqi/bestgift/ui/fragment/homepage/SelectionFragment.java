@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
-import com.wangshiqi.bestgift.model.bean.RotateBean;
+import com.wangshiqi.bestgift.model.bean.RotateImgBean;
 import com.wangshiqi.bestgift.model.bean.SelectionRvBean;
 import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
@@ -24,7 +24,6 @@ import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 import com.wangshiqi.bestgift.view.SelectionListView;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -37,13 +36,8 @@ public class SelectionFragment extends AbsFragment {
     private static final int TIME = 3000;
     private ViewPager viewPager;
     private LinearLayout pointLl;
-    private List<RotateBean> datas;
+    private List<RotateImgBean.DataBean.BannersBean> datas;
     private SelectionVpAdapter vpAdapter;
-
-
-
-
-
 
     private RecyclerView recyclerView;
     private SelectionRvAdapter selectionRvAdapter;
@@ -52,7 +46,6 @@ public class SelectionFragment extends AbsFragment {
 
     private SelectionListView selectionLv;
     private GiftForGirlAdapter selectionLvAdapter;
-
 
 
     public static SelectionFragment newInstance() {
@@ -82,18 +75,6 @@ public class SelectionFragment extends AbsFragment {
     protected void initDatas() {
         // 轮播图数据
         buildDatas();
-        vpAdapter = new SelectionVpAdapter(datas, context);
-        viewPager.setAdapter(vpAdapter);
-        // ViewPager的页数为int最大值,设置当前页多一些,可以上来就向前滑动
-        // 为了保证第一页始终为数据的第0条 取余要为0,因此设置数据集合大小的倍数
-        viewPager.setCurrentItem(datas.size() * 100);
-        // 开始轮播
-        handler = new Handler();
-        startRotate();
-        // 添加轮播标识点
-        addPoints();
-        // 随着轮播改变标识点
-        changePoints();
 
         // 横向recyclerview
         selectionRvAdapter = new SelectionRvAdapter(context);
@@ -238,15 +219,31 @@ public class SelectionFragment extends AbsFragment {
 
 
     private void buildDatas() {
+        VolleyInstance.getInstance().startRequest(NetUrl.IMGURL, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                RotateImgBean rotateImgBean = gson.fromJson(resultStr, RotateImgBean.class);
+                datas = rotateImgBean.getData().getBanners();
+                vpAdapter = new SelectionVpAdapter(datas, context);
+                viewPager.setAdapter(vpAdapter);
+                // ViewPager的页数为int最大值,设置当前页多一些,可以上来就向前滑动
+                // 为了保证第一页始终为数据的第0条 取余要为0,因此设置数据集合大小的倍数
+                viewPager.setCurrentItem(datas.size() * 100);
+                // 开始轮播
+                handler = new Handler();
+                startRotate();
+                // 添加轮播标识点
+                addPoints();
+                // 随着轮播改变标识点
+                changePoints();
+            }
 
-        datas = new ArrayList<>();
-        datas.add(new RotateBean(NetUrl.IMGURL1));
-        datas.add(new RotateBean(NetUrl.IMGURL2));
-        datas.add(new RotateBean(NetUrl.IMGURL3));
-        datas.add(new RotateBean(NetUrl.IMGURL4));
-        datas.add(new RotateBean(NetUrl.IMGURL5));
-        datas.add(new RotateBean(NetUrl.IMGURL6));
-        datas.add(new RotateBean(NetUrl.IMGURL7));
+            @Override
+            public void failure() {
+
+            }
+        });
 
     }
 
