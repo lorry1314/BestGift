@@ -63,6 +63,7 @@ public class GiftForGirlAdapter extends BaseAdapter {
             viewHolder.categoryTv.setText(bean.getColumn().getCategory());
             viewHolder.categoryTv.setVisibility(View.VISIBLE);
             viewHolder.columnTitleTv.setText(bean.getColumn().getTitle());
+            viewHolder.columnTitleTv.setVisibility(View.VISIBLE);
             viewHolder.nickNameTv.setText(bean.getAuthor().getNickname());
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
@@ -71,6 +72,7 @@ public class GiftForGirlAdapter extends BaseAdapter {
             Picasso.with(context).load(bean.getCover_image_url()).into(viewHolder.coverImg);
         }else {
             viewHolder.categoryTv.setVisibility(View.INVISIBLE);
+            viewHolder.columnTitleTv.setVisibility(View.INVISIBLE);
             viewHolder.nickNameTv.setText(bean.getAuthor().getNickname());
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.likesCountTv.setText(bean.getLikes_count() + "");

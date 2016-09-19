@@ -45,4 +45,6 @@ public class NetUrl {
 
     public static final String NEWSTAR = "http://api.liwushuo.com/v2/ranks_v2/ranks/4?limit=20&offset=0"; // 新星榜
 
+    public static final String COLUMN = "http://api.liwushuo.com/v2/columns?limit=20&offset=0"; // 栏目
+
 }
