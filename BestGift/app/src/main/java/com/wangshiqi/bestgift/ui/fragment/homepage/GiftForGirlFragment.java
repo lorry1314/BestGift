@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
-import com.wangshiqi.bestgift.model.net.VolleyResult;
+import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * Created by dllo on 16/9/9.
  * 送女票(后面开始复用)
  */
-public class GiftForGirlFragment extends AbsFragment implements VolleyResult {
+public class GiftForGirlFragment extends AbsFragment implements IVolleyResult {
 
     private ListView girlLv;
     private GiftForGirlAdapter giftForGirlAdapter;

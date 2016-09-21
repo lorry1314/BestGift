@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/18.
  */
-public class CategoryStrategyBean {
+public class ColomnBean {
 
     /**
      * code : 200

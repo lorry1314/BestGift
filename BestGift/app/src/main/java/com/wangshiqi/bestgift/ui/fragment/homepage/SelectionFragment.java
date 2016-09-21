@@ -16,7 +16,7 @@ import com.wangshiqi.bestgift.model.bean.RotateImgBean;
 import com.wangshiqi.bestgift.model.bean.SelectionRvBean;
 import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
-import com.wangshiqi.bestgift.model.net.VolleyResult;
+import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionRvAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionVpAdapter;
@@ -78,7 +78,7 @@ public class SelectionFragment extends AbsFragment {
 
         // 横向recyclerview
         selectionRvAdapter = new SelectionRvAdapter(context);
-        VolleyInstance.getInstance().startRequest(NetUrl.URLRV, new VolleyResult() {
+        VolleyInstance.getInstance().startRequest(NetUrl.URLRV, new IVolleyResult() {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();
@@ -101,7 +101,7 @@ public class SelectionFragment extends AbsFragment {
 
         // ListView
         selectionLvAdapter = new GiftForGirlAdapter(context);
-        VolleyInstance.getInstance().startRequest(NetUrl.URLLV, new VolleyResult() {
+        VolleyInstance.getInstance().startRequest(NetUrl.URLLV, new IVolleyResult() {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();
@@ -219,7 +219,7 @@ public class SelectionFragment extends AbsFragment {
 
 
     private void buildDatas() {
-        VolleyInstance.getInstance().startRequest(NetUrl.IMGURL, new VolleyResult() {
+        VolleyInstance.getInstance().startRequest(NetUrl.IMGURL, new IVolleyResult() {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();

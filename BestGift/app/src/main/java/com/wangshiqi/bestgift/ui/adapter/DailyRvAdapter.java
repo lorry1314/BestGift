@@ -1,6 +1,7 @@
 package com.wangshiqi.bestgift.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,7 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         DailyRvBean.DataBean.ItemsBean bean = datas.get(position);
-        Picasso.with(context).load(bean.getCover_image_url()).into(holder.dailyIv);
+        Picasso.with(context).load(bean.getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.dailyIv);
         holder.dailyName.setText(bean.getName());
         holder.dailyDescription.setText(bean.getShort_description());
         holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));

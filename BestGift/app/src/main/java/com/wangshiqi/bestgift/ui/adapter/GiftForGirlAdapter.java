@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
@@ -67,18 +68,18 @@ public class GiftForGirlAdapter extends BaseAdapter {
             viewHolder.nickNameTv.setText(bean.getAuthor().getNickname());
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
-            Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(viewHolder.authorAvatorImg);
+            Picasso.with(context).load(bean.getAuthor().getAvatar_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.authorAvatorImg);
             viewHolder.coverImg.setMinimumWidth(ScreanSizeUtil.getScreeanWidth(context));
-            Picasso.with(context).load(bean.getCover_image_url()).into(viewHolder.coverImg);
+            Picasso.with(context).load(bean.getCover_image_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.coverImg);
         }else {
             viewHolder.categoryTv.setVisibility(View.INVISIBLE);
             viewHolder.columnTitleTv.setVisibility(View.INVISIBLE);
             viewHolder.nickNameTv.setText(bean.getAuthor().getNickname());
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
-            Picasso.with(context).load(bean.getAuthor().getAvatar_url()).into(viewHolder.authorAvatorImg);
+            Picasso.with(context).load(bean.getAuthor().getAvatar_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.authorAvatorImg);
             viewHolder.coverImg.setMinimumWidth(ScreanSizeUtil.getScreeanWidth(context));
-            Picasso.with(context).load(bean.getCover_image_url()).into(viewHolder.coverImg);
+            Picasso.with(context).load(bean.getCover_image_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.coverImg);
         }
 
         return convertView;

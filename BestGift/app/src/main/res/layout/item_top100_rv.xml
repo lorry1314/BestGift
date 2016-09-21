@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="190dp"
     android:layout_height="250dp"
-    android:id="@+id/daily_cv_item"
+    android:id="@+id/top_cv_item"
     app:cardCornerRadius="5dp"
     android:layout_margin="5dp"
     android:elevation="1dp"
@@ -14,25 +14,51 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.wangshiqi.bestgift.view.RecyclableImageView
-            android:id="@+id/daily_item_iv"
+        <ImageView
+            android:id="@+id/top_item_iv"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="centerCrop" />
 
-
-        <TextView
-            android:id="@+id/daily_item_short_description"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#000"
-            android:textSize="12sp" />
-
+            android:orientation="horizontal">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                >
+                <TextView
+                    android:id="@+id/top_item_tv1"
+                    android:background="@drawable/top_item_shape"
+                    android:textColor="#fff"
+                    style="@style/TopTv" />
+                <TextView
+                    android:id="@+id/top_item_tv2"
+                    style="@style/TopTv"
+                    android:background="@drawable/girl_item_shape"
+                    android:textColor="#e28c96" />
+            </FrameLayout>
         <TextView
-            android:id="@+id/daily_item_name"
+            android:id="@+id/top_item_short_description"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingRight="5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#000"
+            android:text="111"
+            android:textSize="12sp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/top_item_name"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -41,7 +67,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/daily_item_price"
+            android:id="@+id/top_item_price"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"

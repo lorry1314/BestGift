@@ -44,9 +44,9 @@ public class GiftFragment extends AbsFragment {
     protected void initDatas() {
         List<Fragment> datas = new ArrayList<>();
         datas.add(DailyFragment.newInstance(NetUrl.URLDAILY));
-        datas.add(DailyFragment.newInstance(NetUrl.TOP100));
-        datas.add(DailyFragment.newInstance(NetUrl.ORIGINAL));
-        datas.add(DailyFragment.newInstance(NetUrl.NEWSTAR));
+        datas.add(TOPFragment.newInstance(NetUrl.TOP100));
+        datas.add(TOPFragment.newInstance(NetUrl.ORIGINAL));
+        datas.add(TOPFragment.newInstance(NetUrl.NEWSTAR));
 
         giftAdapter = new GiftAdapter(getChildFragmentManager(), datas);
         giftViewPager.setAdapter(giftAdapter);

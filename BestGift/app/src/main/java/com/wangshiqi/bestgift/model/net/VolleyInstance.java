@@ -44,7 +44,7 @@ public class VolleyInstance {
     }
     /********************************************************************/
      // 对外提供请求方法
-    public void startRequest(String url, final VolleyResult result) {
+    public void startRequest(String url, final IVolleyResult result) {
         StringRequest sr = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

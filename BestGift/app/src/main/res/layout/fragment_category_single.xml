@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="match_parent"
+    <ListView
+        android:id="@+id/category_single_lv1"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="单品"/>
+        android:scrollbarThumbVertical="@drawable/single_scrollbar_shape"
+        android:scrollbarSize="3dp"
+        android:scrollbarStyle="insideInset"
+        android:verticalScrollbarPosition="left"
+        />
+
+    <ListView
+        android:id="@+id/category_single_lv2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
 </LinearLayout>
