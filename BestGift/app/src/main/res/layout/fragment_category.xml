@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="中秋佳节送好礼"
+        android:text="选份走心好礼送给Ta"
         android:textColor="#9B9B9B"
         android:textSize="12sp"
         android:padding="5dp"

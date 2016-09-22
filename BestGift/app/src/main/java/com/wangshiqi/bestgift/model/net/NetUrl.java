@@ -49,4 +49,7 @@ public class NetUrl {
 
     public static final String STRATEGY = "http://api.liwushuo.com/v2/channel_groups/all"; // 攻略-品类
 
+    public static final String SINGLE = "http://api.liwushuo.com/v2/item_categories/tree"; // 攻略-单品
+
+
 }

@@ -5,19 +5,20 @@
     android:orientation="horizontal">
 
     <ListView
-        android:id="@+id/category_single_lv1"
+        android:id="@+id/category_single_lv_left"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:scrollbarThumbVertical="@drawable/single_scrollbar_shape"
-        android:scrollbarSize="3dp"
-        android:scrollbarStyle="insideInset"
-        android:verticalScrollbarPosition="left"
+        android:scrollbars="none"
+        android:divider="#ededed"
         />
 
     <ListView
-        android:id="@+id/category_single_lv2"
+        android:id="@+id/category_single_lv_right"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="#fff"
+        android:divider="#fff"
+        />
 
 </LinearLayout>

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
+import com.wangshiqi.bestgift.utils.ScreanSizeUtil;
 
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class Top100RvAdapter extends RecyclerView.Adapter<Top100RvAdapter.ViewHo
             holder.topTv1.setText(span);
             holder.topTv2.setVisibility(View.INVISIBLE);
         }else {
-            Picasso.with(context).load(bean.getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.topIv);
+            Picasso.with(context).load(bean.getCover_image_url()).resize(ScreanSizeUtil.getScreeanWidth(context) * 190 / 768, ScreanSizeUtil.getScreenHeight(context) * 150 / 1280).config(Bitmap.Config.RGB_565).into(holder.topIv);
             holder.topName.setText(bean.getName());
             holder.topDescription.setText(bean.getShort_description());
             holder.topPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));

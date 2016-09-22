@@ -139,7 +139,7 @@ public class SelectionFragment extends AbsFragment {
         } else if ("7".equals(week)) {
             week = "星期六";
         }
-        timeTv.setText("--------   " + str + " " + week + "   --------");
+        timeTv.setText( str + " " + week);
     }
 
     private void changePoints() {

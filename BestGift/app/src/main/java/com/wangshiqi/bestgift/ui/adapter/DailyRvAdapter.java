@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
+import com.wangshiqi.bestgift.utils.ScreanSizeUtil;
 
 import java.util.List;
 
@@ -41,13 +42,22 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         DailyRvBean.DataBean.ItemsBean bean = datas.get(position);
-        Picasso.with(context).load(bean.getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.dailyIv);
-        holder.dailyName.setText(bean.getName());
-        holder.dailyDescription.setText(bean.getShort_description());
-        holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
+        Picasso.with(context).load(bean.getCover_image_url()).resize(ScreanSizeUtil.getScreeanWidth(context) * 190 / 768, ScreanSizeUtil.getScreenHeight(context) * 150 / 1280).config(Bitmap.Config.RGB_565).into(holder.dailyIv);
+        if (bean.getShort_description() != "") {
+            holder.dailyName.setText(bean.getName());
+            holder.dailyDescription.setText(bean.getShort_description());
+            holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
+        }else {
+            holder.dailyDescription.setText(bean.getName());
+            holder.dailyName.setText("");
+            holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
+        }
+
     }
 
-    // 去掉多余的0 和 小数点
+    /**
+     * 去掉多余的0 和 小数点
+     */
     public static String subZeroAndDot(String s) {
         if (s.indexOf(".") > 0) {
             s = s.replaceAll("0+?$", "");//去掉多余的0
