@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/14.
+ * 榜单-每日推荐界面适配器
  */
 public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHolder> {
     private Context context;
@@ -48,7 +49,7 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
             holder.dailyDescription.setText(bean.getShort_description());
             holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
         }else {
-            holder.dailyDescription.setText(bean.getName());
+            holder.dailyDescription.setText(bean.getName());// 当dailyDescryption为"" 设置到dailyName的位置上显示
             holder.dailyName.setText("");
             holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
         }

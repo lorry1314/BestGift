@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 榜单界面适配器
  */
 public class GiftAdapter extends FragmentPagerAdapter {
   private List<Fragment> fragments;

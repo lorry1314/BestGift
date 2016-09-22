@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 首页-PopWindow-RecyclerView适配器
  */
 public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.MyViewHolder> {
     private List<String> datas;

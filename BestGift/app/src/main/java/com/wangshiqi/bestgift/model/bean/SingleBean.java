@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/21.
+ * 分类-单品实体类
  */
 public class SingleBean {
     /**

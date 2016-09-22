@@ -6,6 +6,7 @@ import android.widget.GridView;
 
 /**
  * Created by dllo on 16/9/21.
+ * 自定义GridView
  */
     public class NoScrollGridView extends GridView {
 

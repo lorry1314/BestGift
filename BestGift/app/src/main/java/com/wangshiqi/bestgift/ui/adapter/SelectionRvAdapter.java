@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/14.
+ * 首页-精选页面-横向Rv适配器
  */
 public class SelectionRvAdapter extends RecyclerView.Adapter<SelectionRvAdapter.SelectionRvViewHolder> {
     private Context context;

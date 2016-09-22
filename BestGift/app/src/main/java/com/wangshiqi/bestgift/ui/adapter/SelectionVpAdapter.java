@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/12.
+ * 首页-精选页面-上方轮播图适配器
  */
 public class SelectionVpAdapter extends PagerAdapter {
     private List<RotateImgBean.DataBean.BannersBean> datas;

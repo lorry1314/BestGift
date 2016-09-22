@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/21.
+ * 分类-单品页面-右边ListView适配器
  */
 public class SingleRightLvAdapter extends BaseAdapter {
     private Context context;
@@ -59,6 +60,9 @@ public class SingleRightLvAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+        /**
+         * 热门分类第一条没有标题 所以加入判断不显示
+         */
         if (datas.get(position).getName().equals("热门分类")) {
             viewHolder.linearLayout.setVisibility(View.INVISIBLE);
         } else {

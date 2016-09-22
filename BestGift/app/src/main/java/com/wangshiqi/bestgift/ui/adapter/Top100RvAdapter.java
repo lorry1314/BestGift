@@ -23,6 +23,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/14.
+ * 榜单-TOP100页面适配器(后面俩页复用)
  */
 public class Top100RvAdapter extends RecyclerView.Adapter<Top100RvAdapter.ViewHolder> {
     private Context context;

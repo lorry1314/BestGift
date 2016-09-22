@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 分类-攻略界面-上方横向RecyclerView适配器(加尾布局)
  */
 public class ColomnRvAdapter extends RecyclerView.Adapter<ColomnRvAdapter.CategoryStrategyViewHolder> {
     private static final int TYPE_ITEM = 1, TYPE_FOOT = 2;

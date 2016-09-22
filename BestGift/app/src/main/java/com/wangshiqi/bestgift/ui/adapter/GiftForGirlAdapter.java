@@ -20,6 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/9/14.
+ * 首页-送女友页面适配器(复用)
  */
 public class GiftForGirlAdapter extends BaseAdapter {
     private Context context;

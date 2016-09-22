@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/19.
+ * 分类-攻略-下面三个RecyclerView适配器
  */
 public class StrategyRvAdapter extends RecyclerView.Adapter<StrategyRvAdapter.StrategyViewHolder> {
     private Context context;

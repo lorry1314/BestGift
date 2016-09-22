@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/14.
+ * 首页横向Rv实体类
  */
 public class SelectionRvBean {
     /**

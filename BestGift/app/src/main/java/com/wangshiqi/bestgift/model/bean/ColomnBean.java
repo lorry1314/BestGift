@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 分类-攻略界面上方横向RecyclerView数据实体类
  */
 public class ColomnBean {
 

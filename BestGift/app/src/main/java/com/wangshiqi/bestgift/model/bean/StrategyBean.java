@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/19.
+ * 分类-攻略-下方RecyclerView实体类
  */
 public class StrategyBean {
 

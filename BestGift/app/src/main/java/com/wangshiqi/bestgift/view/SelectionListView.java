@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 /**
  * Created by dllo on 16/9/14.
+ * 自定义ListView
  */
 public class SelectionListView extends ListView {
 

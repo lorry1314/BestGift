@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 /**
  * Created by dllo on 16/9/20.
+ * 自定义ImageView
  */
 public class RecyclableImageView extends ImageView {
     public RecyclableImageView(Context context) {

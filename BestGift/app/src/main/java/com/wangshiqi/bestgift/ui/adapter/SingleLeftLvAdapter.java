@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/21.
+ * 分类-单品页面-左边ListView适配器
  */
 public class SingleLeftLvAdapter extends BaseAdapter {
     private Context context;
@@ -64,7 +65,7 @@ public class SingleLeftLvAdapter extends BaseAdapter {
             viewHolder.mView.setBackgroundColor(Color.parseColor("#ED2D44"));
         }else {
             viewHolder.textView.setTextColor(Color.BLACK);
-            viewHolder.textView.setBackgroundColor(Color.parseColor("#FFEDECEC"));
+            viewHolder.textView.setBackgroundColor(Color.parseColor("#ededed"));
             viewHolder.mView.setBackgroundColor(Color.WHITE);
         }
         return convertView;
@@ -77,7 +78,7 @@ public class SingleLeftLvAdapter extends BaseAdapter {
         View mView;
         public ViewHolder(View view) {
             textView = (TextView) view.findViewById(R.id.item_left_tv);
-            mView = (View) view.findViewById(R.id.item_left_v);
+            mView = view.findViewById(R.id.item_left_v);
         }
     }
 }

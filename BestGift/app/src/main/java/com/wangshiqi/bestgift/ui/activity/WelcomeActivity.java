@@ -6,6 +6,7 @@ import com.wangshiqi.bestgift.R;
 
 /**
  * Created by dllo on 16/9/9.
+ * 欢迎页
  */
 public class WelcomeActivity extends AbsBaseActivity {
     @Override

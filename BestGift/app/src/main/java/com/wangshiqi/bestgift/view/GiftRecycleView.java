@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 
 /**
  * Created by dllo on 16/9/18.
+ * 自定义RecyclerView
  */
 public class GiftRecycleView extends RecyclerView {
     public GiftRecycleView(Context context) {

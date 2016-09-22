@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/14.
+ * 榜单-实体类
  */
 public class DailyRvBean {
 
