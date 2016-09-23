@@ -5,8 +5,11 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -21,7 +24,6 @@ import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionRvAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionVpAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
-import com.wangshiqi.bestgift.view.SelectionListView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,7 +46,7 @@ public class SelectionFragment extends AbsFragment {
 
     private TextView timeTv;
 
-    private SelectionListView selectionLv;
+    private ListView selectionLv;
     private GiftForGirlAdapter selectionLvAdapter;
 
 
@@ -64,15 +66,18 @@ public class SelectionFragment extends AbsFragment {
 
     @Override
     protected void initView() {
-        viewPager = byView(R.id.selection_vp);
-        pointLl = byView(R.id.rotate_poiont_container);
-        recyclerView = byView(R.id.selection_rv);
-        timeTv = byView(R.id.selection_tv);
         selectionLv = byView(R.id.selection_lv);
+
     }
 
     @Override
     protected void initDatas() {
+        View view = LayoutInflater.from(context).inflate(R.layout.selection_headview, null);
+        viewPager = (ViewPager) view.findViewById(R.id.selection_vp);
+        pointLl = (LinearLayout) view.findViewById(R.id.rotate_poiont_container);
+        recyclerView = (RecyclerView) view.findViewById(R.id.selection_rv);
+        timeTv = (TextView) view.findViewById(R.id.selection_tv);
+        selectionLv.addHeaderView(view);
         // 轮播图
         startRoll();
         // 横向recyclerview
@@ -94,7 +99,6 @@ public class SelectionFragment extends AbsFragment {
         recyclerView.setAdapter(selectionRvAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
-
         // 时间
         timeAndUpdate();
 
