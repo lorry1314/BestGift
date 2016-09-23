@@ -1,6 +1,7 @@
 package com.wangshiqi.bestgift.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.RotateImgBean;
+import com.wangshiqi.bestgift.ui.activity.InfoActivity;
 
 import java.util.List;
 
@@ -65,6 +67,13 @@ public class SelectionVpAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.item_rotate_iv);
         RotateImgBean.DataBean.BannersBean bean = datas.get(newPosition);
         Picasso.with(context).load(bean.getImage_url()).into(imageView);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, InfoActivity.class));
+            }
+        });
+
         container.addView(convertView);
         return convertView;
     }

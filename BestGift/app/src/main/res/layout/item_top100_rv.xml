@@ -30,11 +30,13 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:padding="5dp"
                 >
                 <TextView
                     android:id="@+id/top_item_tv1"
                     android:background="@drawable/top_item_shape"
                     android:textColor="#fff"
+                    android:text="222"
                     style="@style/TopTv" />
                 <TextView
                     android:id="@+id/top_item_tv2"

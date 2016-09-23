@@ -14,9 +14,9 @@ import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
 import com.wangshiqi.bestgift.model.bean.RotateImgBean;
 import com.wangshiqi.bestgift.model.bean.SelectionRvBean;
+import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
-import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionRvAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionVpAdapter;
@@ -73,9 +73,8 @@ public class SelectionFragment extends AbsFragment {
 
     @Override
     protected void initDatas() {
-        // 轮播图数据
-        buildDatas();
-
+        // 轮播图
+        startRoll();
         // 横向recyclerview
         selectionRvAdapter = new SelectionRvAdapter(context);
         VolleyInstance.getInstance().startRequest(NetUrl.URLRV, new IVolleyResult() {
@@ -218,7 +217,7 @@ public class SelectionFragment extends AbsFragment {
     }
 
 
-    private void buildDatas() {
+    private void startRoll() {
         VolleyInstance.getInstance().startRequest(NetUrl.IMGURL, new IVolleyResult() {
             @Override
             public void success(String resultStr) {
@@ -237,6 +236,7 @@ public class SelectionFragment extends AbsFragment {
                 addPoints();
                 // 随着轮播改变标识点
                 changePoints();
+
             }
 
             @Override
@@ -246,6 +246,7 @@ public class SelectionFragment extends AbsFragment {
         });
 
     }
+
 
 
 }
