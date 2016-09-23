@@ -59,11 +59,22 @@ public class SingleLeftLvAdapter extends BaseAdapter {
         }
         SingleBean.DataBean.CategoriesBean bean = (SingleBean.DataBean.CategoriesBean) getItem(position);
         viewHolder.textView.setText(bean.getName());
+        /**
+         * 选中状态判断
+         */
         if (position == selectIndex) {
             viewHolder.textView.setBackgroundColor(Color.WHITE);
             viewHolder.textView.setTextColor(Color.parseColor("#ED2D44"));
             viewHolder.mView.setBackgroundColor(Color.parseColor("#ED2D44"));
         }else {
+            viewHolder.textView.setTextColor(Color.BLACK);
+            viewHolder.textView.setBackgroundColor(Color.parseColor("#ededed"));
+            viewHolder.mView.setBackgroundColor(Color.WHITE);
+        }
+        /**
+         * 最后一行选中后状态不变(同原版)
+         */
+        if (selectIndex == datas.size() - 1) {
             viewHolder.textView.setTextColor(Color.BLACK);
             viewHolder.textView.setBackgroundColor(Color.parseColor("#ededed"));
             viewHolder.mView.setBackgroundColor(Color.WHITE);

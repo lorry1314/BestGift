@@ -60,11 +60,11 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="12dp"
             android:gravity="center"
             android:text="下次更新 17:00"
             android:textColor="#ED2D44"
-            android:textSize="8sp" />
+            android:textSize="10sp" />
 
         <com.wangshiqi.bestgift.view.SelectionListView
             android:id="@+id/selection_lv"

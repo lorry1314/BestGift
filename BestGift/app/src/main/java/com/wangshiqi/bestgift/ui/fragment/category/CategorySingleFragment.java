@@ -90,7 +90,7 @@ public class CategorySingleFragment extends AbsFragment {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                    if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {return;}
+                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {return;}
                 leftLvAdapter.setIndex(firstVisibleItem);
                 listViewLeft.smoothScrollToPositionFromTop(firstVisibleItem - 1, 0);
                 leftLvAdapter.notifyDataSetChanged();
