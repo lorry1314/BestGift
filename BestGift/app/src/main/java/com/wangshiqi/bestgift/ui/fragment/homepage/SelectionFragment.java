@@ -21,6 +21,7 @@ import com.wangshiqi.bestgift.model.bean.SelectionRvBean;
 import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
+import com.wangshiqi.bestgift.ui.activity.SelectionLvDetailActivity;
 import com.wangshiqi.bestgift.ui.activity.SelectionRvDetailActivity;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionRvAdapter;
@@ -100,8 +101,17 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
             public void success(String resultStr) {
                 Gson gson = new Gson();
                 GiftForGilrBean bean = gson.fromJson(resultStr, GiftForGilrBean.class);
-                List<GiftForGilrBean.DataBean.ItemsBean> datas = bean.getData().getItems();
+                final List<GiftForGilrBean.DataBean.ItemsBean> datas = bean.getData().getItems();
                 selectionLvAdapter.setDatas(datas);
+                selectionLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(context, SelectionLvDetailActivity.class);
+                        intent.putExtra("ID", datas.get(position - 2).getId() + "");
+                        intent.putExtra("like", datas.get(position - 2).getLikes_count() + "");
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
@@ -111,12 +121,7 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
         });
         selectionLv.setAdapter(selectionLvAdapter);
         selectionLv.setInterface(this);
-        selectionLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
-            }
-        });
+
     }
 
     private void selectionRecyclerView() {

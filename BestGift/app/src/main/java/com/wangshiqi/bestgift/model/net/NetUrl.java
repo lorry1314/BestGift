@@ -52,5 +52,7 @@ public class NetUrl {
 
     public static final String SINGLE = "http://api.liwushuo.com/v2/item_categories/tree"; // 攻略-单品
 
+    public static final String LVDETAIL = "http://www.liwushuo.com/posts/"; // 详情拼接
+
 
 }

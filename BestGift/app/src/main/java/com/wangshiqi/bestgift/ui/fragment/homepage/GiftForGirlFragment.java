@@ -1,13 +1,17 @@
 package com.wangshiqi.bestgift.ui.fragment.homepage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.google.gson.Gson;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
 import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
+import com.wangshiqi.bestgift.ui.activity.SelectionLvDetailActivity;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 import com.wangshiqi.bestgift.view.ReFlashListView;
@@ -22,7 +26,7 @@ public class GiftForGirlFragment extends AbsFragment implements IVolleyResult, R
 
     private ReFlashListView girlLv;
     private GiftForGirlAdapter giftForGirlAdapter;
-
+    private List<GiftForGilrBean.DataBean.ItemsBean> datas;
 
 
     public static GiftForGirlFragment newInstance(String url) {
@@ -53,13 +57,22 @@ public class GiftForGirlFragment extends AbsFragment implements IVolleyResult, R
         VolleyInstance.getInstance().startRequest(string, this);
         girlLv.setAdapter(giftForGirlAdapter);
         girlLv.setInterface(this);
+        girlLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context, SelectionLvDetailActivity.class);
+                intent.putExtra("ID", datas.get(position - 1).getId() + "");
+                intent.putExtra("like", datas.get(position - 1).getLikes_count() + "");
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void success(String resultStr) {
         Gson gson = new Gson();
         GiftForGilrBean bean = gson.fromJson(resultStr, GiftForGilrBean.class);
-        List<GiftForGilrBean.DataBean.ItemsBean> datas = bean.getData().getItems();
+        datas = bean.getData().getItems();
         giftForGirlAdapter.setDatas(datas);
     }
 

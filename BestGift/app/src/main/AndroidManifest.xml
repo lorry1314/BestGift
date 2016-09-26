@@ -31,6 +31,7 @@
         <activity android:name=".ui.activity.InfoActivity" />
         <activity android:name=".ui.activity.SelectionRvDetailActivity"
             android:theme="@style/SelectionRvDetailStyle"/>
+        <activity android:name=".ui.activity.SelectionLvDetailActivity"/>
     </application>
 
 </manifest>
