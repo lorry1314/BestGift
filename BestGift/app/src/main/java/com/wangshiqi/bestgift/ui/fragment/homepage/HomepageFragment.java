@@ -18,6 +18,7 @@ import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.ui.adapter.HomepageAdapter;
 import com.wangshiqi.bestgift.ui.adapter.HomepagePopAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
+import com.wangshiqi.bestgift.utils.HomepagePopRvItemClick;
 import com.wangshiqi.bestgift.utils.ScreanSizeUtil;
 
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     private LinearLayout homepageRootView;
     private RecyclerView popRv;
     private HomepagePopAdapter homepagePopAdapter;
+    private String[] titles;
+    private int selectIndex = 0;
 
     public static HomepageFragment newInstance() {
         Bundle args = new Bundle();
@@ -84,19 +87,10 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     }
 
     private void homepageTbSet() {
-        homepageTb.getTabAt(0).setText("精选");
-        homepageTb.getTabAt(1).setText("送女票");
-        homepageTb.getTabAt(2).setText("海淘");
-        homepageTb.getTabAt(3).setText("创意生活");
-        homepageTb.getTabAt(4).setText("送基友");
-        homepageTb.getTabAt(5).setText("送爸妈");
-        homepageTb.getTabAt(6).setText("送同事");
-        homepageTb.getTabAt(7).setText("送宝贝");
-        homepageTb.getTabAt(8).setText("设计感");
-        homepageTb.getTabAt(9).setText("文艺风");
-        homepageTb.getTabAt(10).setText("奇葩搞怪");
-        homepageTb.getTabAt(11).setText("科技范");
-        homepageTb.getTabAt(12).setText("萌萌哒");
+        titles = getResources().getStringArray(R.array.tab_title);
+        for (int i = 0; i < 13; i++) {
+            homepageTb.getTabAt(i).setText(titles[i]);
+        }
         homepageTb.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
 
@@ -120,29 +114,29 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
         pw.showAsDropDown(homepageRootView);
         homepagePopAdapter = new HomepagePopAdapter(context);
         List<String> datas = new ArrayList<>();
-        datas.add("精选");
-        datas.add("送女票");
-        datas.add("海淘");
-        datas.add("创意生活");
-        datas.add("送基友");
-        datas.add("送爸妈");
-        datas.add("送同事");
-        datas.add("送宝贝");
-        datas.add("设计感");
-        datas.add("文艺风");
-        datas.add("奇葩搞怪");
-        datas.add("科技范");
-        datas.add("萌萌哒");
+        for (int i = 0; i < 13; i++) {
+            datas.add(titles[i]);
+        }
+            datas.add(null);
+            datas.add(null);
+            datas.add(null);
         homepagePopAdapter.setDatas(datas);
-
         popRv.setAdapter(homepagePopAdapter);
         GridLayoutManager sgm = new GridLayoutManager(context, 4, GridLayoutManager.VERTICAL, false);
         popRv.setLayoutManager(sgm);
-
         popIv = (ImageView) v.findViewById(R.id.pop_iv);
         popIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pw.dismiss();
+            }
+        });
+        selectIndex = homepageVp.getCurrentItem();
+        homepagePopAdapter.setIndex(selectIndex);
+        homepagePopAdapter.setPopRvItemClick(new HomepagePopRvItemClick() {
+            @Override
+            public void OnPopRvItemClickListener(int position, String string) {
+                homepageVp.setCurrentItem(position);
                 pw.dismiss();
             }
         });

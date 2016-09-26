@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">礼物说</string>
+    <string-array name="tab_title">
+        <item>精选</item>
+        <item>送女票</item>
+        <item>海淘</item>
+        <item>创意生活</item>
+        <item>送基友</item>
+        <item>送爸妈</item>
+        <item>送同事</item>
+        <item>送宝贝</item>
+        <item>设计感</item>
+        <item>文艺风</item>
+        <item>奇葩搞怪</item>
+        <item>科技范</item>
+        <item>萌萌哒</item>
+    </string-array>
 </resources>

@@ -1,5 +1,6 @@
 package com.wangshiqi.bestgift.ui.fragment.homepage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -7,9 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -20,10 +21,13 @@ import com.wangshiqi.bestgift.model.bean.SelectionRvBean;
 import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
+import com.wangshiqi.bestgift.ui.activity.SelectionRvDetailActivity;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionRvAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionVpAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
+import com.wangshiqi.bestgift.utils.SelectionOnRvItemClick;
+import com.wangshiqi.bestgift.view.ReFlashListView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,7 +38,7 @@ import java.util.List;
  * Created by dllo on 16/9/9.
  * 精选页面
  */
-public class SelectionFragment extends AbsFragment {
+public class SelectionFragment extends AbsFragment implements ReFlashListView.IReflashListener {
     private static final int TIME = 3000;
     private ViewPager viewPager;
     private LinearLayout pointLl;
@@ -46,7 +50,7 @@ public class SelectionFragment extends AbsFragment {
 
     private TextView timeTv;
 
-    private ListView selectionLv;
+    private ReFlashListView selectionLv;
     private GiftForGirlAdapter selectionLvAdapter;
 
 
@@ -68,6 +72,7 @@ public class SelectionFragment extends AbsFragment {
     protected void initView() {
         selectionLv = byView(R.id.selection_lv);
 
+
     }
 
     @Override
@@ -81,6 +86,40 @@ public class SelectionFragment extends AbsFragment {
         // 轮播图
         startRoll();
         // 横向recyclerview
+        selectionRecyclerView();
+        // 时间
+        timeAndUpdate();
+        // ListView
+        listView();
+    }
+
+    private void listView() {
+        selectionLvAdapter = new GiftForGirlAdapter(context);
+        VolleyInstance.getInstance().startRequest(NetUrl.URLLV, new IVolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                GiftForGilrBean bean = gson.fromJson(resultStr, GiftForGilrBean.class);
+                List<GiftForGilrBean.DataBean.ItemsBean> datas = bean.getData().getItems();
+                selectionLvAdapter.setDatas(datas);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+        selectionLv.setAdapter(selectionLvAdapter);
+        selectionLv.setInterface(this);
+        selectionLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                
+            }
+        });
+    }
+
+    private void selectionRecyclerView() {
         selectionRvAdapter = new SelectionRvAdapter(context);
         VolleyInstance.getInstance().startRequest(NetUrl.URLRV, new IVolleyResult() {
             @Override
@@ -99,26 +138,15 @@ public class SelectionFragment extends AbsFragment {
         recyclerView.setAdapter(selectionRvAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
-        // 时间
-        timeAndUpdate();
-
-        // ListView
-        selectionLvAdapter = new GiftForGirlAdapter(context);
-        VolleyInstance.getInstance().startRequest(NetUrl.URLLV, new IVolleyResult() {
+        selectionRvAdapter.setSelectionOnRvItemClick(new SelectionOnRvItemClick() {
             @Override
-            public void success(String resultStr) {
-                Gson gson = new Gson();
-                GiftForGilrBean bean = gson.fromJson(resultStr, GiftForGilrBean.class);
-                List<GiftForGilrBean.DataBean.ItemsBean> datas = bean.getData().getItems();
-                selectionLvAdapter.setDatas(datas);
-            }
-
-            @Override
-            public void failure() {
-
+            public void onRvItemClickListener(int positon, SelectionRvBean.DataBean.SecondaryBannersBean data) {
+                Intent intent = new Intent(context, SelectionRvDetailActivity.class);
+                intent.putExtra("position", positon);
+                startActivity(intent);
             }
         });
-        selectionLv.setAdapter(selectionLvAdapter);
+
     }
 
     private void timeAndUpdate() {
@@ -142,7 +170,7 @@ public class SelectionFragment extends AbsFragment {
         } else if ("7".equals(week)) {
             week = "星期六";
         }
-        timeTv.setText( str + " " + week);
+        timeTv.setText(str + " " + week);
     }
 
     private void changePoints() {
@@ -252,5 +280,14 @@ public class SelectionFragment extends AbsFragment {
     }
 
 
-
+    @Override
+    public void onReflash() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                selectionLv.reflshComplete();
+            }
+        }, 2000);
+        selectionLvAdapter.notifyDataSetChanged();
+    }
 }

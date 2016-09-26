@@ -6,7 +6,7 @@
 
 
 
-    <ListView
+    <com.wangshiqi.bestgift.view.ReFlashListView
         android:id="@+id/girl_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,5 +14,5 @@
         android:dividerHeight="5dp"
         android:scrollbars="none">
 
-    </ListView>
+    </com.wangshiqi.bestgift.view.ReFlashListView>
 </LinearLayout>

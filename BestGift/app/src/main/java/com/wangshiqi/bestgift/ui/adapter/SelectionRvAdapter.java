@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.SelectionRvBean;
+import com.wangshiqi.bestgift.utils.SelectionOnRvItemClick;
 
 import java.util.List;
 
@@ -20,6 +21,11 @@ import java.util.List;
 public class SelectionRvAdapter extends RecyclerView.Adapter<SelectionRvAdapter.SelectionRvViewHolder> {
     private Context context;
     private List<SelectionRvBean.DataBean.SecondaryBannersBean> datas;
+    private SelectionOnRvItemClick selectionOnRvItemClick;
+
+    public void setSelectionOnRvItemClick(SelectionOnRvItemClick selectionOnRvItemClick) {
+        this.selectionOnRvItemClick = selectionOnRvItemClick;
+    }
 
     public SelectionRvAdapter(Context context) {
         this.context = context;
@@ -38,9 +44,19 @@ public class SelectionRvAdapter extends RecyclerView.Adapter<SelectionRvAdapter.
     }
 
     @Override
-    public void onBindViewHolder(SelectionRvViewHolder holder, int position) {
+    public void onBindViewHolder(final SelectionRvViewHolder holder, final int position) {
         SelectionRvBean.DataBean.SecondaryBannersBean bean = datas.get(position);
         Picasso.with(context).load(bean.getImage_url()).resize(150, 150).into(holder.imageView);
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectionOnRvItemClick != null) {
+                    int p = holder.getLayoutPosition();
+                    SelectionRvBean.DataBean.SecondaryBannersBean secondaryBannersBean = datas.get(position);
+                    selectionOnRvItemClick.onRvItemClickListener(p, secondaryBannersBean);
+                }
+            }
+        });
     }
 
     @Override

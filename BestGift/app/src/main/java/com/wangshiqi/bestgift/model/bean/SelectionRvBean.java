@@ -1,5 +1,6 @@
 package com.wangshiqi.bestgift.model.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -60,7 +61,7 @@ public class SelectionRvBean {
             this.secondary_banners = secondary_banners;
         }
 
-        public static class SecondaryBannersBean {
+        public static class SecondaryBannersBean implements Serializable {
             private int id;
             private String image_url;
             private String target_url;

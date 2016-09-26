@@ -82,7 +82,7 @@ public class MainActivity extends AbsBaseActivity {
     private void exit() {
         if (!isExit) {
             isExit = true;
-            Toast.makeText(getApplicationContext(), "再按一次退出<礼物说>",
+            Toast.makeText(getApplicationContext(), "再按一次退出" + getResources().getString(R.string.app_name),
                     Toast.LENGTH_SHORT).show();
             // 利用handler延迟发送更改状态信息
             mHandler.sendEmptyMessageDelayed(0, 2000);

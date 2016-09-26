@@ -1,13 +1,15 @@
 package com.wangshiqi.bestgift.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.wangshiqi.bestgift.R;
+import com.wangshiqi.bestgift.utils.HomepagePopRvItemClick;
 
 import java.util.List;
 
@@ -18,6 +20,15 @@ import java.util.List;
 public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.MyViewHolder> {
     private List<String> datas;
     private Context context;
+    private HomepagePopRvItemClick popRvItemClick;
+    private int selectIndex;
+
+    public void setIndex(int index) {
+        selectIndex = index;
+    }
+    public void setPopRvItemClick(HomepagePopRvItemClick popRvItemClick) {
+        this.popRvItemClick = popRvItemClick;
+    }
 
     public HomepagePopAdapter(Context context) {
         this.context = context;
@@ -36,9 +47,26 @@ public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.popBtn.setText(datas.get(position));
+        holder.popTv.setText(datas.get(position));
+        holder.popTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (popRvItemClick != null && datas.get(position) != null) {
+                    int p = holder.getLayoutPosition();
+                    String string = datas.get(p);
+                    popRvItemClick.OnPopRvItemClickListener(p, string);
+                }
+            }
+        });
+        if (position == selectIndex) {
+            holder.popTv.setTextColor(Color.parseColor("#ED2D44"));
+            holder.popView.setBackgroundColor(Color.parseColor("#ED2D44"));
+        }else {
+            holder.popTv.setTextColor(Color.BLACK);
+            holder.popView.setVisibility(View.GONE);
+        }
 
     }
 
@@ -49,11 +77,13 @@ public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        private Button popBtn;
+        private TextView popTv;
+        private View popView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            popBtn = (Button) itemView.findViewById(R.id.item_pop_btn);
+            popTv = (TextView) itemView.findViewById(R.id.item_pop_tv);
+            popView = itemView.findViewById(R.id.item_pop_view);
         }
     }
 }

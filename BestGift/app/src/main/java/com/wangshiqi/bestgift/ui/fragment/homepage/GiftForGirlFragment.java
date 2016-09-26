@@ -1,15 +1,16 @@
 package com.wangshiqi.bestgift.ui.fragment.homepage;
 
 import android.os.Bundle;
-import android.widget.ListView;
+import android.os.Handler;
 
 import com.google.gson.Gson;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
-import com.wangshiqi.bestgift.model.net.VolleyInstance;
 import com.wangshiqi.bestgift.model.net.IVolleyResult;
+import com.wangshiqi.bestgift.model.net.VolleyInstance;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
+import com.wangshiqi.bestgift.view.ReFlashListView;
 
 import java.util.List;
 
@@ -17,9 +18,9 @@ import java.util.List;
  * Created by dllo on 16/9/9.
  * 送女票(后面开始复用)
  */
-public class GiftForGirlFragment extends AbsFragment implements IVolleyResult {
+public class GiftForGirlFragment extends AbsFragment implements IVolleyResult, ReFlashListView.IReflashListener {
 
-    private ListView girlLv;
+    private ReFlashListView girlLv;
     private GiftForGirlAdapter giftForGirlAdapter;
 
 
@@ -51,6 +52,7 @@ public class GiftForGirlFragment extends AbsFragment implements IVolleyResult {
         giftForGirlAdapter = new GiftForGirlAdapter(context);
         VolleyInstance.getInstance().startRequest(string, this);
         girlLv.setAdapter(giftForGirlAdapter);
+        girlLv.setInterface(this);
     }
 
     @Override
@@ -64,5 +66,17 @@ public class GiftForGirlFragment extends AbsFragment implements IVolleyResult {
     @Override
     public void failure() {
 
+    }
+
+    @Override
+    public void onReflash() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                girlLv.reflshComplete();
+            }
+        }, 2000);
+        giftForGirlAdapter.notifyDataSetChanged();
     }
 }
