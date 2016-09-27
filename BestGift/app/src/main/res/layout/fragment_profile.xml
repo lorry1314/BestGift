@@ -2,13 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
     android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:background="@mipmap/bg_profile">
 
         <ImageView
@@ -133,7 +132,7 @@
             android:button="@null"
             android:gravity="center"
             android:background="@drawable/profile_rb_shape"
-            android:textSize="20sp"/>
+            android:textSize="16sp"/>
 
         <RadioButton
             android:id="@+id/profile_strategy"
@@ -144,7 +143,7 @@
             android:gravity="center"
             android:text="攻略"
             android:background="@drawable/profile_rb_shape"
-            android:textSize="20sp"
+            android:textSize="16sp"
             />
     </RadioGroup>
 
@@ -154,6 +153,7 @@
         android:id="@+id/profile_fl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></FrameLayout>
+        android:background="#f1efef"
+        android:layout_weight="1"/>
 
 </LinearLayout>

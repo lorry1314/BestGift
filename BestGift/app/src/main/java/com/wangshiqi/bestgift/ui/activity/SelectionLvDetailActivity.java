@@ -3,6 +3,7 @@ package com.wangshiqi.bestgift.ui.activity;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -55,8 +56,26 @@ public class SelectionLvDetailActivity extends AbsBaseActivity implements View.O
         detailLvWeb.loadUrl(url);
         String likesCount = intent.getStringExtra("like");
         favouriteTv.setText(likesCount);
-        shareTv.setText(likesCount);
-        commentTv.setText(likesCount);
+        webSet(); // 设置WebView加载网页的属性
+    }
+
+    private void webSet() {
+        WebSettings set = detailLvWeb.getSettings();
+//        // 让WebView能够执行javaScript
+        set.setJavaScriptEnabled(true);
+//        // 让JavaScript可以自动打开windows
+        set.setJavaScriptCanOpenWindowsAutomatically(true);
+        // 支持缩放(适配到当前屏幕)
+        set.setSupportZoom(false);
+        // 将图片调整到合适的大小
+        set.setUseWideViewPort(true);
+        // 支持内容重新布局,一共有四种方式
+        // 默认的是NARROW_COLUMNS
+        set.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        // 设置可以被显示的屏幕控制
+        set.setDisplayZoomControls(true);
+        // 设置默认字体大小
+        set.setDefaultFontSize(12);
     }
 
 

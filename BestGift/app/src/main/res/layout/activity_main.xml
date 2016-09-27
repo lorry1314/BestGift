@@ -14,13 +14,14 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#9d9d9d" />
+        android:layout_height="0.5dp"
+        android:background="#e2e2e2" />
 
     <RadioGroup
         android:id="@+id/main_radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#fff"
         android:orientation="horizontal">
 
         <RadioButton

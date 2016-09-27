@@ -54,5 +54,4 @@ public class NetUrl {
 
     public static final String LVDETAIL = "http://www.liwushuo.com/posts/"; // 详情拼接
 
-
 }

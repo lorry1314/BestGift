@@ -1,5 +1,6 @@
 package com.wangshiqi.bestgift.ui.fragment.homepage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,9 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.net.NetUrl;
+import com.wangshiqi.bestgift.ui.activity.SearchActivity;
 import com.wangshiqi.bestgift.ui.adapter.HomepageAdapter;
 import com.wangshiqi.bestgift.ui.adapter.HomepagePopAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
@@ -38,6 +41,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     private HomepagePopAdapter homepagePopAdapter;
     private String[] titles;
     private int selectIndex = 0;
+    private TextView searchTv;
 
     public static HomepageFragment newInstance() {
         Bundle args = new Bundle();
@@ -57,6 +61,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
         homepageTb = byView(R.id.homepage_tb);
         downIv = byView(R.id.homepage_downIv);
         homepageRootView = byView(R.id.homepage_rootview);
+        searchTv = byView(R.id.homepage_search_tv);
     }
 
     @Override
@@ -66,6 +71,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
         homepageTb.setupWithViewPager(homepageVp);
         homepageTbSet(); // 设置TabLayout标签数据
         downIv.setOnClickListener(this);
+        searchTv.setOnClickListener(this);
     }
 
     private void addFragments() {
@@ -99,6 +105,9 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
         switch (v.getId()) {
             case R.id.homepage_downIv:
                 showWindow(); // popwindow弹出方法
+                break;
+            case R.id.homepage_search_tv:
+                startActivity(new Intent(context, SearchActivity.class));
                 break;
         }
     }

@@ -32,6 +32,7 @@
         <activity android:name=".ui.activity.SelectionRvDetailActivity"
             android:theme="@style/SelectionRvDetailStyle"/>
         <activity android:name=".ui.activity.SelectionLvDetailActivity"/>
+        <activity android:name=".ui.activity.SearchActivity"/>
     </application>
 
 </manifest>
