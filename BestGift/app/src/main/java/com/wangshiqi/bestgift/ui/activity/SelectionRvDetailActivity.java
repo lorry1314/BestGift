@@ -18,6 +18,9 @@ import com.wangshiqi.bestgift.model.net.VolleyInstance;
 
 import java.util.List;
 
+/**
+ * 横向Rv详情 图片放大
+ */
 public class SelectionRvDetailActivity extends Activity {
     private ImageView imageView;
 

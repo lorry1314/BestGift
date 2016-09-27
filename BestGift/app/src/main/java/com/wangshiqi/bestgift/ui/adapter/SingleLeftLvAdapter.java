@@ -78,6 +78,11 @@ public class SingleLeftLvAdapter extends BaseAdapter {
             viewHolder.textView.setTextColor(Color.BLACK);
             viewHolder.textView.setBackgroundColor(Color.parseColor("#ededed"));
             viewHolder.mView.setBackgroundColor(Color.WHITE);
+            if (position == selectIndex - 1) {
+                viewHolder.textView.setBackgroundColor(Color.WHITE);
+                viewHolder.textView.setTextColor(Color.parseColor("#ED2D44"));
+                viewHolder.mView.setBackgroundColor(Color.parseColor("#ED2D44"));
+            }
         }
         return convertView;
     }

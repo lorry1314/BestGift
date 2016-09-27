@@ -4,6 +4,7 @@ import com.wangshiqi.bestgift.R;
 
 /**
  * Created by dllo on 16/9/23.
+ * 轮播图详情
  */
 public class InfoActivity extends AbsBaseActivity {
     @Override

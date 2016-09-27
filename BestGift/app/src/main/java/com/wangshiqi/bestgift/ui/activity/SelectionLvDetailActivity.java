@@ -14,6 +14,7 @@ import com.wangshiqi.bestgift.model.net.NetUrl;
 
 /**
  * Created by dllo on 16/9/26.
+ * 精选ListView行布局详情(后面复用)
  */
 public class SelectionLvDetailActivity extends AbsBaseActivity implements View.OnClickListener {
     private WebView detailLvWeb;

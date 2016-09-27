@@ -251,8 +251,9 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
     @Override
     public void onPause() {
         super.onPause();
-        isRotate = false;
+        isRotate = true;
     }
+
 
 
     private void startRoll() {

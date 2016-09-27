@@ -115,7 +115,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     private void showWindow() {
         final PopupWindow pw = new PopupWindow(context);
         pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        pw.setHeight(ScreanSizeUtil.getScreenHeight(context) * 4 / 10);
+        pw.setHeight(ScreanSizeUtil.getScreenHeight(context) * 2 / 5);
         View v = LayoutInflater.from(context).inflate(R.layout.homepage_popup, null);
         popRv = (RecyclerView) v.findViewById(R.id.pop_rv);
         pw.setFocusable(true);
