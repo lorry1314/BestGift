@@ -22,7 +22,7 @@ import com.wangshiqi.bestgift.ui.adapter.HomepageAdapter;
 import com.wangshiqi.bestgift.ui.adapter.HomepagePopAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 import com.wangshiqi.bestgift.utils.HomepagePopRvItemClick;
-import com.wangshiqi.bestgift.utils.ScreanSizeUtil;
+import com.wangshiqi.bestgift.utils.ScreenSizeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +93,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     }
 
     private void homepageTbSet() {
-        titles = getResources().getStringArray(R.array.tab_title);
+        titles = getResources().getStringArray(R.array.homepage_tab);
         for (int i = 0; i < 13; i++) {
             homepageTb.getTabAt(i).setText(titles[i]);
         }
@@ -115,7 +115,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     private void showWindow() {
         final PopupWindow pw = new PopupWindow(context);
         pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        pw.setHeight(ScreanSizeUtil.getScreenHeight(context) * 2 / 5);
+        pw.setHeight(ScreenSizeUtil.getScreenHeight(context) * 2 / 5);
         View v = LayoutInflater.from(context).inflate(R.layout.homepage_popup, null);
         popRv = (RecyclerView) v.findViewById(R.id.pop_rv);
         pw.setFocusable(true);

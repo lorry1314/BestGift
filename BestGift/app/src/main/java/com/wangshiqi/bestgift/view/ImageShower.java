@@ -1,4 +1,4 @@
-package com.wangshiqi.bestgift.ui.activity;
+package com.wangshiqi.bestgift.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * 横向Rv详情 图片放大
  */
-public class SelectionRvDetailActivity extends Activity {
+public class ImageShower extends Activity {
     private ImageView imageView;
 
     @Override
@@ -39,7 +39,7 @@ public class SelectionRvDetailActivity extends Activity {
                 Intent intent = getIntent();
                 int p = intent.getIntExtra("position", 0);
                 SelectionRvBean.DataBean.SecondaryBannersBean bean = rvDatas.get(p);
-                Picasso.with(SelectionRvDetailActivity.this).load(bean.getImage_url()).into(imageView);
+                Picasso.with(ImageShower.this).load(bean.getImage_url()).into(imageView);
             }
 
             @Override

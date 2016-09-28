@@ -12,7 +12,7 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.GiftForGilrBean;
-import com.wangshiqi.bestgift.utils.ScreanSizeUtil;
+import com.wangshiqi.bestgift.utils.ScreenSizeUtil;
 
 import java.util.List;
 
@@ -25,6 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class GiftForGirlAdapter extends BaseAdapter {
     private Context context;
     private List<GiftForGilrBean.DataBean.ItemsBean> datas;
+
 
     public GiftForGirlAdapter(Context context) {
         this.context = context;
@@ -70,7 +71,7 @@ public class GiftForGirlAdapter extends BaseAdapter {
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
             Picasso.with(context).load(bean.getAuthor().getAvatar_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.authorAvatorImg);
-            viewHolder.coverImg.setMinimumWidth(ScreanSizeUtil.getScreeanWidth(context));
+            viewHolder.coverImg.setMinimumWidth(ScreenSizeUtil.getScreeanWidth(context));
             Picasso.with(context).load(bean.getCover_image_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.coverImg);
         }else {
             viewHolder.categoryTv.setVisibility(View.INVISIBLE);
@@ -79,9 +80,10 @@ public class GiftForGirlAdapter extends BaseAdapter {
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
             Picasso.with(context).load(bean.getAuthor().getAvatar_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.authorAvatorImg);
-            viewHolder.coverImg.setMinimumWidth(ScreanSizeUtil.getScreeanWidth(context));
+            viewHolder.coverImg.setMinimumWidth(ScreenSizeUtil.getScreeanWidth(context));
             Picasso.with(context).load(bean.getCover_image_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.coverImg);
         }
+
 
         return convertView;
     }

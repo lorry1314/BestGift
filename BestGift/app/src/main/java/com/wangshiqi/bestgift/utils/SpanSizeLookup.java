@@ -4,12 +4,12 @@ import android.support.v7.widget.GridLayoutManager;
 
 /**
  * Created by dllo on 16/9/20.
- * RecyclerView加尾工具类
+ * RecyclerView加头尾工具类
  */
-public class FooterSpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
+public class SpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
     private final GridLayoutManager layoutManager;
 
-    public FooterSpanSizeLookup(GridLayoutManager layoutManager) {
+    public SpanSizeLookup(GridLayoutManager layoutManager) {
         this.layoutManager = layoutManager;
     }
     @Override

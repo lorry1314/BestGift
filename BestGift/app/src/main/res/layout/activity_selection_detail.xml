@@ -17,14 +17,14 @@
             android:id="@+id/back_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/back_iv_margin"
             android:src="@mipmap/action_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/back_iv_margin"
             android:text="查看全集"
             android:textColor="#fff" />
 

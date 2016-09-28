@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-
- *- Created by dllo on 16/9/8.
+ * - Created by dllo on 16/9/8.
  * 榜单页面
  */
 public class GiftFragment extends AbsFragment {
     private TabLayout giftTabLayout;
     private ViewPager giftViewPager;
     private GiftAdapter giftAdapter;
+    private String[] titles;
 
     public static GiftFragment newInstance() {
 
@@ -31,15 +31,18 @@ public class GiftFragment extends AbsFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_gift;
     }
+
     @Override
     protected void initView() {
         giftTabLayout = byView(R.id.gift_tb);
         giftViewPager = byView(R.id.gift_vp);
     }
+
     @Override
     protected void initDatas() {
         List<Fragment> datas = new ArrayList<>();
@@ -51,10 +54,9 @@ public class GiftFragment extends AbsFragment {
         giftAdapter = new GiftAdapter(getChildFragmentManager(), datas);
         giftViewPager.setAdapter(giftAdapter);
         giftTabLayout.setupWithViewPager(giftViewPager);
-        giftTabLayout.getTabAt(0).setText("每日推荐");
-        giftTabLayout.getTabAt(1).setText("TOP100");
-        giftTabLayout.getTabAt(2).setText("独立原创");
-        giftTabLayout.getTabAt(3).setText("新星榜");
-
+        titles = getResources().getStringArray(R.array.gift_tab);
+        for (int i = 0; i < 4; i++) {
+            giftTabLayout.getTabAt(i).setText(titles[i]);
+        }
     }
 }

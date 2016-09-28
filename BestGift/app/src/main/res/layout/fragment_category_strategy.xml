@@ -11,7 +11,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="@dimen/strategy_relative_height">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,9 +43,7 @@
             android:layout_height="6dp"
             android:background="#eaeaea" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="320dp">
+        <RelativeLayout style="@style/reletiveLayout_strategy">
 
             <TextView
                 android:id="@+id/strategy_category_tv"
@@ -76,9 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:background="#eaeaea" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="320dp">
+        <RelativeLayout style="@style/reletiveLayout_strategy">
 
             <TextView
                 android:id="@+id/strategy_style_tv"
@@ -109,9 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:background="#eaeaea" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="320dp">
+        <RelativeLayout style="@style/reletiveLayout_strategy">
 
             <TextView
                 android:id="@+id/strategy_target_tv"

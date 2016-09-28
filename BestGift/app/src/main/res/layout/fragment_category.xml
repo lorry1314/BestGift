@@ -6,10 +6,9 @@
     android:layout_height="match_parent"
     android:background="#fff">
     <LinearLayout
-        android:id="@+id/homepage_rootview"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#ED1B36"
+        android:layout_height="@dimen/title_view_height"
+        android:background="@color/colorBestGiftClassic"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -17,7 +16,7 @@
             android:id="@+id/category_tb"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="@dimen/category_tab_marginBottom"
             app:tabTextColor="#fff"
             app:tabSelectedTextColor="#ffffff"
             app:tabIndicatorColor="#ffffff">
@@ -27,18 +26,18 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="#ededed"
+        android:layout_margin="@dimen/category_search_margin"
+        android:background="@color/category_search_background"
         >
     <TextView
         android:id="@+id/category_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="选份走心好礼送给Ta"
-        android:textColor="#9B9B9B"
-        android:textSize="12sp"
-        android:padding="5dp"
+        android:text="@string/search_text"
+        android:textColor="@color/category_search_textColor"
+        android:textSize="@dimen/category_search_textSize"
+        android:padding="@dimen/category_search_padding"
         android:gravity="center"
 
        />

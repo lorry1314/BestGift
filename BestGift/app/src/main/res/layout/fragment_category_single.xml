@@ -6,10 +6,10 @@
 
     <ListView
         android:id="@+id/category_single_lv_left"
-        android:layout_width="100dp"
+        android:layout_width="@dimen/single_left_width"
         android:layout_height="match_parent"
         android:scrollbars="none"
-        android:divider="#ededed"
+        android:divider="@color/single_left_divider"
         />
 
     <ListView

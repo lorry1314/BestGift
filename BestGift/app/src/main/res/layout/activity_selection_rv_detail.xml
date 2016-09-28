@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.wangshiqi.bestgift.ui.activity.SelectionRvDetailActivity">
+    tools:context=".view.ImageShower">
 
     <ImageView
         android:id="@+id/selection_rv_detail_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="fitCenter"
         />
 </LinearLayout>

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">礼物说</string>
-    <string-array name="tab_title">
+    <!--首页tab-->
+    <string-array name="homepage_tab">
         <item>精选</item>
         <item>送女票</item>
         <item>海淘</item>
@@ -15,4 +16,19 @@
         <item>科技范</item>
         <item>萌萌哒</item>
     </string-array>
+    <!--榜单tab-->
+    <string-array name="gift_tab">
+        <item>每日推荐</item>
+        <item>TOP100</item>
+        <item>独立原创</item>
+        <item>新星榜</item>
+    </string-array>
+    <!--分类tab-->
+    <string-array name="category_tab">
+        <item>攻略</item>
+        <item>单品</item>
+    </string-array>
+    <!--搜索栏文字-->
+    <string name="search_text">选份走心好礼送给Ta</string>
+
 </resources>

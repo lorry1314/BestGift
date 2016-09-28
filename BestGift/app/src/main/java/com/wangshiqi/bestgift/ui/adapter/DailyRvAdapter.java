@@ -2,6 +2,7 @@ package com.wangshiqi.bestgift.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
-import com.wangshiqi.bestgift.utils.ScreanSizeUtil;
+import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
+import com.wangshiqi.bestgift.utils.ScreenSizeUtil;
+import com.wangshiqi.bestgift.view.RecyclableImageView;
 
 import java.util.List;
 
@@ -21,39 +24,101 @@ import java.util.List;
  * 榜单-每日推荐界面适配器
  */
 public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHolder> {
+    private static final int TYPE_ITEM = 1, TYPE_HEAD = 0;
+    private String imgUrl;
     private Context context;
     private List<DailyRvBean.DataBean.ItemsBean> datas;
+    private GiftOnRvItemClick giftOnRvItemClick;
+
+    public void setGiftOnRvItemClick(GiftOnRvItemClick giftOnRvItemClick) {
+        this.giftOnRvItemClick = giftOnRvItemClick;
+    }
+
 
     public DailyRvAdapter(Context context) {
         this.context = context;
     }
 
-    public void setDatas(List<DailyRvBean.DataBean.ItemsBean> datas) {
+    public void setDatas(List<DailyRvBean.DataBean.ItemsBean> datas, String imgUrl) {
         this.datas = datas;
+        this.imgUrl = imgUrl;
         notifyDataSetChanged();
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_daily_rv, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+    public int getItemViewType(int position) {
+        int type = TYPE_ITEM;
+        if (position == 0) {
+            type = TYPE_HEAD;
+        }
+        return type;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        DailyRvBean.DataBean.ItemsBean bean = datas.get(position);
-        Picasso.with(context).load(bean.getCover_image_url()).resize(ScreanSizeUtil.getScreeanWidth(context) * 190 / 768, ScreanSizeUtil.getScreenHeight(context) * 150 / 1280).config(Bitmap.Config.RGB_565).into(holder.dailyIv);
-        if (bean.getShort_description() != "") {
-            holder.dailyName.setText(bean.getName());
-            holder.dailyDescription.setText(bean.getShort_description());
-            holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
-        }else {
-            holder.dailyDescription.setText(bean.getName());// 当dailyDescryption为"" 设置到dailyName的位置上显示
-            holder.dailyName.setText("");
-            holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = null;
+        switch (viewType) {
+            case TYPE_ITEM:
+                view = LayoutInflater.from(context).inflate(R.layout.item_daily_rv, parent, false);
+                break;
+            case TYPE_HEAD:
+                view = LayoutInflater.from(context).inflate(R.layout.item_daily_head, parent, false);
+                break;
         }
+        return new ViewHolder(view);
+    }
 
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        if (manager instanceof GridLayoutManager) {
+            final GridLayoutManager gridLayoutManager = (GridLayoutManager) manager;
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    return getItemViewType(position) == TYPE_HEAD ? gridLayoutManager.getSpanCount() : 1;
+                }
+            });
+        }
+    }
+
+
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        switch (getItemViewType(position)) {
+            case TYPE_ITEM:
+                final DailyRvBean.DataBean.ItemsBean bean = datas.get(position - 1);
+                Picasso.with(context).load(bean.getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.dailyIv);
+                if (bean.getShort_description() != "") {
+                    holder.dailyName.setText(bean.getName());
+                    holder.dailyDescription.setText(bean.getShort_description());
+                    holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
+                } else {
+                    holder.dailyDescription.setText(bean.getName());// 当dailyDescryption为"" 设置到dailyName的位置上显示
+                    holder.dailyName.setText("");
+                    holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
+                }
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (giftOnRvItemClick != null) {
+                            int p = holder.getLayoutPosition();
+                            giftOnRvItemClick.onRvItemClickListener(p, bean);
+                        }
+                    }
+                });
+                break;
+            case TYPE_HEAD:
+                // 0的position在这被用了
+                ViewGroup.LayoutParams params = holder.dailyHeadIv.getLayoutParams();
+                params.width = ScreenSizeUtil.getScreeanWidth(context);
+                params.height = ScreenSizeUtil.getScreenHeight(context) / 3;
+                holder.dailyHeadIv.setLayoutParams(params);
+                Picasso.with(context).load(imgUrl).config(Bitmap.Config.RGB_565).into(holder.dailyHeadIv);
+                break;
+        }
     }
 
     /**
@@ -69,21 +134,22 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return datas != null && datas.size() > 0 ? datas.size() : 0;
+        return datas == null ? 0 : datas.size() + 1;
     }
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView dailyIv;
+        RecyclableImageView dailyIv;
+        ImageView dailyHeadIv;
         TextView dailyName, dailyDescription, dailyPrice;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            dailyIv = (ImageView) itemView.findViewById(R.id.daily_item_iv);
+            dailyIv = (RecyclableImageView) itemView.findViewById(R.id.daily_item_iv);
             dailyDescription = (TextView) itemView.findViewById(R.id.daily_item_short_description);
             dailyName = (TextView) itemView.findViewById(R.id.daily_item_name);
             dailyPrice = (TextView) itemView.findViewById(R.id.daily_item_price);
+            dailyHeadIv = (RecyclableImageView) itemView.findViewById(R.id.daily_header_iv);
         }
     }
 }

@@ -15,7 +15,7 @@ import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.ui.adapter.ColomnRvAdapter;
 import com.wangshiqi.bestgift.ui.adapter.StrategyRvAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
-import com.wangshiqi.bestgift.utils.FooterSpanSizeLookup;
+import com.wangshiqi.bestgift.utils.SpanSizeLookup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,25 +87,25 @@ public class CategoryStrategyFragment extends AbsFragment {
                     }
                     categoryAdapter.setDatas(categoryBean);
                     strategyCategoryTv.setText(datas.get(0).getName());
-
-                    if (datas.get(1).getName().equals("风格")) {
-                        List<StrategyBean.DataBean.ChannelGroupsBean.ChannelsBean> styleBean = new ArrayList<>();
-                        for (int i = 0; i < 6; i++) {
-                            styleBean.add(bean.getData().getChannel_groups().get(1).getChannels().get(i));
-                        }
-                        styleAdapter.setDatas(styleBean);
-                        strategyStyleTv.setText(datas.get(1).getName());
-                    }
-
-                    if (datas.get(2).getName().equals("对象")) {
-                        List<StrategyBean.DataBean.ChannelGroupsBean.ChannelsBean> targetBean = new ArrayList<>();
-                        for (int i = 0; i < 6; i++) {
-                            targetBean.add(bean.getData().getChannel_groups().get(2).getChannels().get(i));
-                        }
-                        targetAdapter.setDatas(targetBean);
-                        strategyTargetTv.setText(datas.get(2).getName());
-                    }
                 }
+                if (datas.get(1).getName().equals("风格")) {
+                    List<StrategyBean.DataBean.ChannelGroupsBean.ChannelsBean> styleBean = new ArrayList<>();
+                    for (int i = 0; i < 6; i++) {
+                        styleBean.add(bean.getData().getChannel_groups().get(1).getChannels().get(i));
+                    }
+                    styleAdapter.setDatas(styleBean);
+                    strategyStyleTv.setText(datas.get(1).getName());
+                }
+
+                if (datas.get(2).getName().equals("对象")) {
+                    List<StrategyBean.DataBean.ChannelGroupsBean.ChannelsBean> targetBean = new ArrayList<>();
+                    for (int i = 0; i < 6; i++) {
+                        targetBean.add(bean.getData().getChannel_groups().get(2).getChannels().get(i));
+                    }
+                    targetAdapter.setDatas(targetBean);
+                    strategyTargetTv.setText(datas.get(2).getName());
+                }
+
             }
 
             @Override
@@ -119,7 +119,7 @@ public class CategoryStrategyFragment extends AbsFragment {
         colomnRvAdapter = new ColomnRvAdapter(context);
         colomnRecyclerView.setAdapter(colomnRvAdapter);
         GridLayoutManager manager = new GridLayoutManager(context, 3, GridLayoutManager.HORIZONTAL, false);
-        manager.setSpanSizeLookup(new FooterSpanSizeLookup(manager));
+        manager.setSpanSizeLookup(new SpanSizeLookup(manager));
         colomnRecyclerView.setLayoutManager(manager);
         VolleyInstance.getInstance().startRequest(NetUrl.COLUMN, new IVolleyResult() {
             @Override

@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/homepage_rootview"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/title_view_height"
         android:background="#ED1B36"
         android:orientation="horizontal">
 

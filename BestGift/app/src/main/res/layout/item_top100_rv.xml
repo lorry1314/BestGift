@@ -14,10 +14,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+        <com.wangshiqi.bestgift.view.RecyclableImageView
             android:id="@+id/top_item_iv"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:scaleType="centerCrop" />
 
         <LinearLayout

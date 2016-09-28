@@ -8,7 +8,7 @@ import android.view.WindowManager;
  * Created by dllo on 16/9/13.
  * 获取屏幕宽高的工具类
  */
-public class ScreanSizeUtil {
+public class ScreenSizeUtil {
 
     public static int getScreeanWidth(Context context) {
         // 获取窗口管理者

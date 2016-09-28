@@ -47,8 +47,9 @@ public class CategoryFragment extends AbsFragment {
         categoryAdapter = new CategoryAdapter(getChildFragmentManager(), datas);
         categoryVp.setAdapter(categoryAdapter);
         categoryTb.setupWithViewPager(categoryVp);
-
-        categoryTb.getTabAt(0).setText("攻略");
-        categoryTb.getTabAt(1).setText("单品");
+        String [] titles = getResources().getStringArray(R.array.category_tab);
+        for (int i = 0; i < 2; i++) {
+            categoryTb.getTabAt(i).setText(titles[i]);
+        }
     }
 }

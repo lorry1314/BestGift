@@ -2,28 +2,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-
-    <LinearLayout
+    android:background="#f9eeee"
+    android:orientation="vertical">
+    <com.wangshiqi.bestgift.view.GiftRecycleView
+        android:id="@+id/daily_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#f9eeee">
-        <com.wangshiqi.bestgift.view.RecyclableImageView
-            android:id="@+id/daily_header_iv"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="10dp"
-            />
-
-
-
-
-        <com.wangshiqi.bestgift.view.GiftRecycleView
-            android:id="@+id/daily_rv"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-    </LinearLayout>
+         />
 </ScrollView>

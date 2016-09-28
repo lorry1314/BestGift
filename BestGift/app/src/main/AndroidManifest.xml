@@ -29,7 +29,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".ui.activity.InfoActivity" />
-        <activity android:name=".ui.activity.SelectionRvDetailActivity"
+        <activity android:name=".view.ImageShower"
             android:theme="@style/SelectionRvDetailStyle"/>
         <activity android:name=".ui.activity.SelectionLvDetailActivity"/>
         <activity android:name=".ui.activity.SearchActivity"/>

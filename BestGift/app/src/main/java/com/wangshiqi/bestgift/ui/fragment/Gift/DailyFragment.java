@@ -1,19 +1,19 @@
 package com.wangshiqi.bestgift.ui.fragment.gift;
 
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
 
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
-import com.wangshiqi.bestgift.model.net.VolleyInstance;
 import com.wangshiqi.bestgift.model.net.IVolleyResult;
+import com.wangshiqi.bestgift.model.net.VolleyInstance;
+import com.wangshiqi.bestgift.ui.activity.InfoActivity;
 import com.wangshiqi.bestgift.ui.adapter.DailyRvAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
+import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
+import com.wangshiqi.bestgift.view.GiftRecycleView;
 
 import java.util.List;
 
@@ -23,8 +23,7 @@ import java.util.List;
  */
 public class DailyFragment extends AbsFragment implements IVolleyResult {
 
-    private ImageView dailyIv;
-    private RecyclerView dailyRv;
+    private GiftRecycleView dailyRv;
     private DailyRvAdapter dailyRvAdapter;
 
     public static DailyFragment newInstance(String url) {
@@ -44,7 +43,6 @@ public class DailyFragment extends AbsFragment implements IVolleyResult {
     @Override
     protected void initView() {
         dailyRv = byView(R.id.daily_rv);
-        dailyIv = byView(R.id.daily_header_iv);
     }
 
     @Override
@@ -52,23 +50,37 @@ public class DailyFragment extends AbsFragment implements IVolleyResult {
         Bundle bundle = getArguments();
         String string = bundle.getString("url");
         dailyRvAdapter = new DailyRvAdapter(context);
-        dailyRv.setAdapter(dailyRvAdapter);
-        GridLayoutManager manager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager manager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         dailyRv.setLayoutManager(manager);
+        dailyRv.setAdapter(dailyRvAdapter);
         VolleyInstance.getInstance().startRequest(string, this);
+        dailyRvAdapter.setGiftOnRvItemClick(new GiftOnRvItemClick() {
+            @Override
+            public void onRvItemClickListener(int positon, DailyRvBean.DataBean.ItemsBean data) {
+                Intent intent = new Intent(context, InfoActivity.class);
+                intent.putExtra("position", positon);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void success(String resultStr) {
         Gson gson = new Gson();
         DailyRvBean bean = gson.fromJson(resultStr,DailyRvBean.class);
+        String imgUrl = bean.getData().getCover_image();
         List<DailyRvBean.DataBean.ItemsBean> datas =  bean.getData().getItems();
-        dailyRvAdapter.setDatas(datas);
-        Picasso.with(context).load(bean.getData().getCover_image()).config(Bitmap.Config.RGB_565).into(dailyIv);
+        dailyRvAdapter.setDatas(datas, imgUrl);
     }
 
     @Override
     public void failure() {
 
     }
+
 }

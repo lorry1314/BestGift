@@ -22,7 +22,7 @@ import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
 import com.wangshiqi.bestgift.ui.activity.SelectionLvDetailActivity;
-import com.wangshiqi.bestgift.ui.activity.SelectionRvDetailActivity;
+import com.wangshiqi.bestgift.view.ImageShower;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionRvAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionVpAdapter;
@@ -109,7 +109,6 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
                         Intent intent = new Intent(context, SelectionLvDetailActivity.class);
                         intent.putExtra("ID", datas.get(position - 2).getId() + "");
                         intent.putExtra("like", datas.get(position - 2).getLikes_count() + "");
-//                        intent.putExtra("content", datas.get(position - 2).getContent_url());
                         startActivity(intent);
                     }
                 });
@@ -147,7 +146,7 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
         selectionRvAdapter.setSelectionOnRvItemClick(new SelectionOnRvItemClick() {
             @Override
             public void onRvItemClickListener(int positon, SelectionRvBean.DataBean.SecondaryBannersBean data) {
-                Intent intent = new Intent(context, SelectionRvDetailActivity.class);
+                Intent intent = new Intent(context, ImageShower.class);
                 intent.putExtra("position", positon);
                 startActivity(intent);
             }

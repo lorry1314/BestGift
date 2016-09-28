@@ -12,6 +12,6 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="5dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         />
 </LinearLayout>
