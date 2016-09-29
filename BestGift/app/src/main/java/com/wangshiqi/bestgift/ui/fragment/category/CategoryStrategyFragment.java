@@ -68,9 +68,24 @@ public class CategoryStrategyFragment extends AbsFragment {
         styleRv.setAdapter(styleAdapter);
         targetAdapter = new StrategyRvAdapter(context);
         targetRv.setAdapter(targetAdapter);
-        GridLayoutManager glm1 = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
-        GridLayoutManager glm2 = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
-        GridLayoutManager glm3 = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager glm1 = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        GridLayoutManager glm2 = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        GridLayoutManager glm3 = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         categoryRv.setLayoutManager(glm1);
         styleRv.setLayoutManager(glm2);
         targetRv.setLayoutManager(glm3);

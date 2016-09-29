@@ -3,14 +3,13 @@ package com.wangshiqi.bestgift.ui.fragment.gift;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
 import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
-import com.wangshiqi.bestgift.ui.activity.InfoActivity;
+import com.wangshiqi.bestgift.ui.activity.GiftDetailActivity;
 import com.wangshiqi.bestgift.ui.adapter.Top100RvAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
@@ -60,15 +59,6 @@ public class TOPFragment extends AbsFragment implements IVolleyResult {
         topRv.setLayoutManager(manager);
         topRv.setAdapter(topRvAdapter);
         VolleyInstance.getInstance().startRequest(string, this);
-        topRvAdapter.setGiftOnRvItemClick(new GiftOnRvItemClick() {
-            @Override
-            public void onRvItemClickListener(int positon, DailyRvBean.DataBean.ItemsBean data) {
-                Log.d("xxx", "aaa");
-                Intent intent = new Intent(context, InfoActivity.class);
-                intent.putExtra("position", positon);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -76,8 +66,17 @@ public class TOPFragment extends AbsFragment implements IVolleyResult {
         Gson gson = new Gson();
         DailyRvBean bean = gson.fromJson(resultStr, DailyRvBean.class);
         String imgUrl = bean.getData().getCover_image();
-        List<DailyRvBean.DataBean.ItemsBean> datas = bean.getData().getItems();
+        final List<DailyRvBean.DataBean.ItemsBean> datas = bean.getData().getItems();
         topRvAdapter.setDatas(datas, imgUrl);
+        topRvAdapter.setGiftOnRvItemClick(new GiftOnRvItemClick() {
+            @Override
+            public void onRvItemClickListener(int positon, DailyRvBean.DataBean.ItemsBean data) {
+                Intent intent = new Intent(context, GiftDetailActivity.class);
+                intent.putExtra("url", datas.get(positon - 1).getUrl());
+                intent.putExtra("taobaoUrl", datas.get(positon - 1).getPurchase_url());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

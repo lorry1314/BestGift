@@ -108,7 +108,6 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(context, SelectionLvDetailActivity.class);
                         intent.putExtra("ID", datas.get(position - 2).getId() + "");
-                        intent.putExtra("like", datas.get(position - 2).getLikes_count() + "");
                         startActivity(intent);
                     }
                 });

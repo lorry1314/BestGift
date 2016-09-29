@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.RotateImgBean;
-import com.wangshiqi.bestgift.ui.activity.InfoActivity;
+import com.wangshiqi.bestgift.ui.activity.RotateDetailActivity;
+import com.wangshiqi.bestgift.ui.activity.WelcomeActivity;
 
 import java.util.List;
 
@@ -23,8 +24,6 @@ public class SelectionVpAdapter extends PagerAdapter {
     private List<RotateImgBean.DataBean.BannersBean> datas;
     private Context context;
     private LayoutInflater inflater;
-
-
 
 
     public SelectionVpAdapter(Context context) {
@@ -60,17 +59,24 @@ public class SelectionVpAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-       // position是int最大值所以这里可能是几百甚至上千, 因此取余避免数组越界
-        int newPosition = position % datas.size();
+    public Object instantiateItem(ViewGroup container, final int position) {
+        // position是int最大值所以这里可能是几百甚至上千, 因此取余避免数组越界
+        final int newPosition = position % datas.size();
         View convertView = inflater.inflate(R.layout.item_selection_vp, container, false);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.item_rotate_iv);
-        RotateImgBean.DataBean.BannersBean bean = datas.get(newPosition);
+        final RotateImgBean.DataBean.BannersBean bean = datas.get(newPosition);
         Picasso.with(context).load(bean.getImage_url()).into(imageView);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, InfoActivity.class));
+                if (datas.get(newPosition).getTarget_id() != 0) {
+                    Intent intent = new Intent(context, RotateDetailActivity.class);
+                    intent.putExtra("id", datas.get(newPosition).getTarget_id() + "");
+                    intent.putExtra("type", bean.getType());
+                    context.startActivity(intent);
+                }else {
+                    context.startActivity(new Intent(context, WelcomeActivity.class));
+                }
             }
         });
 

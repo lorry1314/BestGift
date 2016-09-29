@@ -52,6 +52,11 @@ public class NetUrl {
 
     public static final String SINGLE = "http://api.liwushuo.com/v2/item_categories/tree"; // 攻略-单品
 
-    public static final String LVDETAIL = "http://api.liwushuo.com/v2/posts_v2/"; // 详情拼接
+    public static final String LVDETAIL = "http://api.liwushuo.com/v2/posts_v2/"; // 精选LV详情拼接
+
+    public static final String ROTATE_BEFOREID = "http://api.liwushuo.com/v2/collections/"; // 轮播图详情拼接ID前
+
+    public static final String ROTATE_AFTERID = "/posts?gender=1&generation=2&limit=20&offset=0"; // 轮播图详情拼接ID后
+
 
 }

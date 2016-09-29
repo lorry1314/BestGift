@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="哈哈哈哈
-        "/>
-    <ListView
-        android:id="@+id/rotate_detail"
+    <WebView
+        android:id="@+id/rotate_detail_wb"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</LinearLayout>
+        android:layout_height="match_parent" />
+
+    <ListView
+        android:id="@+id/rotate_detail_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/rotate_detail_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#fff"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/selection_detail_iv"
+                android:src="@mipmap/ic_action_compact_favourite_normal" />
+
+            <TextView
+                android:id="@+id/rotate_favourite_tv"
+                style="@style/selection_detail_tv" />
+
+            <ImageView
+                style="@style/selection_detail_iv"
+                android:src="@mipmap/ic_action_compact_share" />
+
+            <TextView
+                android:id="@+id/rotate_share_tv"
+                style="@style/selection_detail_tv" />
+
+            <ImageView
+                style="@style/selection_detail_iv"
+                android:src="@mipmap/ic_action_compact_comment" />
+
+            <TextView
+                android:id="@+id/rotate_comment_tv"
+                style="@style/selection_detail_tv" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

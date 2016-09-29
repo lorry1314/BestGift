@@ -75,4 +75,10 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">320dp</item>
     </style>
+
+    <style name="giftdetail_img">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+    </style>
 </resources>

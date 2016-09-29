@@ -63,7 +63,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      * 存储一些key-value形式的数据
      */
     protected void goTo(Context from, Class<? extends AbsBaseActivity> to, Bundle extras) {
-        Intent intent = new Intent();
+        Intent intent = new Intent(from, to);
         intent.putExtras(extras);
         startActivity(intent);
     }
