@@ -42,6 +42,11 @@
                 android:id="@+id/favourite_tv"
                 style="@style/selection_detail_tv"
                  />
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="#d6d6d6"/>
             <ImageView
                style="@style/selection_detail_iv"
                 android:src="@mipmap/ic_action_compact_share"/>
@@ -49,6 +54,11 @@
                 android:id="@+id/share_tv"
                 style="@style/selection_detail_tv"
                 />
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="#d6d6d6"/>
             <ImageView
                 style="@style/selection_detail_iv"
                 android:src="@mipmap/ic_action_compact_comment"/>
