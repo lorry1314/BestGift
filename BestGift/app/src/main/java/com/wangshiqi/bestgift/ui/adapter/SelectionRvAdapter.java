@@ -47,7 +47,7 @@ public class SelectionRvAdapter extends RecyclerView.Adapter<SelectionRvAdapter.
     @Override
     public void onBindViewHolder(final SelectionRvViewHolder holder, final int position) {
         final SelectionRvBean.DataBean.SecondaryBannersBean bean = datas.get(position);
-        Picasso.with(context).load(bean.getImage_url()).resize(ScreenSizeUtil.getScreeanWidth(context) / 5, ScreenSizeUtil.getScreenHeight(context) / 8).into(holder.imageView);
+        Picasso.with(context).load(bean.getImage_url()).resize(ScreenSizeUtil.getScreenWidth(context) / 5, ScreenSizeUtil.getScreenHeight(context) / 8).into(holder.imageView);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -113,8 +113,8 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
             case TYPE_HEAD:
                 // 0的position在这被用了
                 ViewGroup.LayoutParams params = holder.dailyHeadIv.getLayoutParams();
-                params.width = ScreenSizeUtil.getScreeanWidth(context);
-                params.height = ScreenSizeUtil.getScreenHeight(context) * 15 / 48;
+                params.width = ScreenSizeUtil.getScreenWidth(context);
+                params.height = ScreenSizeUtil.getScreenHeight(context) * 14 / 48;
                 holder.dailyHeadIv.setLayoutParams(params);
                 Picasso.with(context).load(imgUrl).config(Bitmap.Config.RGB_565).into(holder.dailyHeadIv);
                 break;

@@ -32,7 +32,6 @@
             android:drawableLeft="@mipmap/icon_search_grey"
             android:drawablePadding="5dp"
             android:padding="3dp"
-            android:text="选份走心好礼送给Ta"
             android:textSize="12sp" />
 
         <ImageView

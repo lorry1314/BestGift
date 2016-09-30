@@ -79,7 +79,6 @@ public class RotateDetailActivity extends AbsBaseActivity {
         }
         if (type.equals("post")) {
             rotateLv.setVisibility(View.GONE);
-
             VolleyInstance.getInstance().startRequest(wbUrl, new IVolleyResult() {
                 @Override
                 public void success(String resultStr) {
@@ -108,20 +107,6 @@ public class RotateDetailActivity extends AbsBaseActivity {
                 }
             });
 
-        }
-        if (type.equals("url")) {
-            rotateLv.setVisibility(View.GONE);
-            rotateWb.setWebViewClient(new WebViewClient() {
-                @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    return false;
-                }
-
-                @Override
-                public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
-                    return super.shouldOverrideKeyEvent(view, event);
-                }
-            });
         }
     }
 

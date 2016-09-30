@@ -10,7 +10,7 @@ import android.view.WindowManager;
  */
 public class ScreenSizeUtil {
 
-    public static int getScreeanWidth(Context context) {
+    public static int getScreenWidth(Context context) {
         // 获取窗口管理者
         WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         // 创建显示尺寸类

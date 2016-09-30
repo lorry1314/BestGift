@@ -71,7 +71,7 @@ public class RotateDetailAdapter extends BaseAdapter {
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
             Picasso.with(context).load(bean.getAuthor().getAvatar_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.authorAvatorImg);
-            viewHolder.coverImg.setMinimumWidth(ScreenSizeUtil.getScreeanWidth(context));
+            viewHolder.coverImg.setMinimumWidth(ScreenSizeUtil.getScreenWidth(context));
             Picasso.with(context).load(bean.getCover_image_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.coverImg);
         }else {
             viewHolder.categoryTv.setVisibility(View.INVISIBLE);
@@ -80,7 +80,7 @@ public class RotateDetailAdapter extends BaseAdapter {
             viewHolder.titleTv.setText(bean.getTitle());
             viewHolder.likesCountTv.setText(bean.getLikes_count() + "");
             Picasso.with(context).load(bean.getAuthor().getAvatar_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.authorAvatorImg);
-            viewHolder.coverImg.setMinimumWidth(ScreenSizeUtil.getScreeanWidth(context));
+            viewHolder.coverImg.setMinimumWidth(ScreenSizeUtil.getScreenWidth(context));
             Picasso.with(context).load(bean.getCover_image_url()).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(viewHolder.coverImg);
         }
 

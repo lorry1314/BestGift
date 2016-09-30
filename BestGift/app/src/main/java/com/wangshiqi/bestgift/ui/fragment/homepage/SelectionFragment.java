@@ -22,16 +22,15 @@ import com.wangshiqi.bestgift.model.net.IVolleyResult;
 import com.wangshiqi.bestgift.model.net.NetUrl;
 import com.wangshiqi.bestgift.model.net.VolleyInstance;
 import com.wangshiqi.bestgift.ui.activity.SelectionLvDetailActivity;
-import com.wangshiqi.bestgift.view.ImageShower;
 import com.wangshiqi.bestgift.ui.adapter.GiftForGirlAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionRvAdapter;
 import com.wangshiqi.bestgift.ui.adapter.SelectionVpAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 import com.wangshiqi.bestgift.utils.SelectionOnRvItemClick;
+import com.wangshiqi.bestgift.view.ImageShower;
 import com.wangshiqi.bestgift.view.ReFlashListView;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -45,12 +44,9 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
     private LinearLayout pointLl;
     private List<RotateImgBean.DataBean.BannersBean> datas;
     private SelectionVpAdapter vpAdapter;
-
     private RecyclerView recyclerView;
     private SelectionRvAdapter selectionRvAdapter;
-
     private TextView timeTv;
-
     private ReFlashListView selectionLv;
     private GiftForGirlAdapter selectionLvAdapter;
 
@@ -154,27 +150,10 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
     }
 
     private void timeAndUpdate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM月dd日 EEEE");
         Date curDate = new Date(System.currentTimeMillis());
         String str = formatter.format(curDate);
-        Calendar c = Calendar.getInstance();
-        String week = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
-        if ("1".equals(week)) {
-            week = "星期日";
-        } else if ("2".equals(week)) {
-            week = "星期一";
-        } else if ("3".equals(week)) {
-            week = "星期二";
-        } else if ("4".equals(week)) {
-            week = "星期三";
-        } else if ("5".equals(week)) {
-            week = "星期四";
-        } else if ("6".equals(week)) {
-            week = "星期五";
-        } else if ("7".equals(week)) {
-            week = "星期六";
-        }
-        timeTv.setText(str + " " + week);
+        timeTv.setText(str);
     }
 
     private void changePoints() {
@@ -227,19 +206,25 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
     private Handler handler;
     private boolean isRotate = false;
     private Runnable rotateRunnable;
+    private boolean flag = true;
 
     private void startRotate() {
-        rotateRunnable = new Runnable() {
-            @Override
-            public void run() {
-                int nowIndex = viewPager.getCurrentItem();
-                viewPager.setCurrentItem(++nowIndex);
-                if (isRotate) {
+        handler = new Handler();
+
+        if (flag) {
+            rotateRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    int nowIndex = viewPager.getCurrentItem();
+                    viewPager.setCurrentItem(++nowIndex);
                     handler.postDelayed(rotateRunnable, TIME);
+
                 }
-            }
-        };
-        handler.postDelayed(rotateRunnable, TIME);
+            };
+            handler.postDelayed(rotateRunnable, TIME);
+            flag = false;
+        }
+
     }
 
     @Override
@@ -254,8 +239,6 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
         isRotate = true;
     }
 
-
-
     private void startRoll() {
         VolleyInstance.getInstance().startRequest(NetUrl.IMGURL, new IVolleyResult() {
             @Override
@@ -269,13 +252,11 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
                 // 为了保证第一页始终为数据的第0条 取余要为0,因此设置数据集合大小的倍数
                 viewPager.setCurrentItem(datas.size() * 100);
                 // 开始轮播
-                handler = new Handler();
                 startRotate();
                 // 添加轮播标识点
                 addPoints();
                 // 随着轮播改变标识点
                 changePoints();
-
             }
 
             @Override

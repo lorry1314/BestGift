@@ -72,6 +72,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
         homepageTb.setupWithViewPager(homepageVp);
         homepageTbSet(); // 设置TabLayout标签数据
         downIv.setOnClickListener(this);
+        searchTv.setText(getResources().getString(R.string.search_text));
         searchTv.setOnClickListener(this);
     }
 

@@ -129,8 +129,8 @@ public class Top100RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 // 0的position在这被用了
                 HolderOneImg holderOneImg = (HolderOneImg) holder;
                 ViewGroup.LayoutParams params = holderOneImg.coverImageView.getLayoutParams();
-                params.width = ScreenSizeUtil.getScreeanWidth(context);
-                params.height = ScreenSizeUtil.getScreenHeight(context) * 15 / 48;
+                params.width = ScreenSizeUtil.getScreenWidth(context);
+                params.height = ScreenSizeUtil.getScreenHeight(context) * 14 / 48;
                 holderOneImg.coverImageView.setLayoutParams(params);
                 Picasso.with(context).load(imgUrl).config(Bitmap.Config.RGB_565).into(holderOneImg.coverImageView);
                 break;
