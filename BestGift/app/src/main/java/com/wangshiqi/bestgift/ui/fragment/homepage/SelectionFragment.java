@@ -187,14 +187,15 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
             @Override
             public void onPageSelected(int position) {
                 if (isRotate) {
-                    // 把所有标识点设置为白色
+                    // 把所有标识点设置为透明色
                     for (int i = 0; i < datas.size(); i++) {
                         ImageView pointIv = (ImageView) pointLl.getChildAt(i);
-                        pointIv.setImageResource(R.mipmap.dispoint);
+                        pointIv.setImageResource(R.mipmap.btn_check_normal);
+                        pointIv.setAlpha(0.2f);
                     }
-                    // 设置当前位置标识点为灰色
+                    // 设置当前位置标识点为白
                     ImageView iv = (ImageView) pointLl.getChildAt(position % datas.size());
-                    iv.setImageResource(R.mipmap.point);
+                    iv.setImageResource(R.mipmap.btn_check);
                 }
             }
 
@@ -209,14 +210,15 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
         // 有多少张图片加载多少个标识点
         for (int i = 0; i < datas.size(); i++) {
             ImageView poiontIv = new ImageView(context);
-            poiontIv.setPadding(5, 5, 5, 5);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
+            poiontIv.setPadding(8, 8, 8, 8);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(35, 35);
             poiontIv.setLayoutParams(params);
             // 设置第0页标识点为灰色
             if (i == 0) {
-                poiontIv.setImageResource(R.mipmap.point);
+                poiontIv.setImageResource(R.mipmap.btn_check);
             } else {
-                poiontIv.setImageResource(R.mipmap.dispoint);
+                poiontIv.setImageResource(R.mipmap.btn_check_normal);
+                poiontIv.setAlpha(0.2f);
             }
             pointLl.addView(poiontIv);
         }

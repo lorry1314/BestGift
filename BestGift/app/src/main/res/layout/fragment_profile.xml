@@ -60,53 +60,29 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/profile_text_view"
             android:drawableTop="@mipmap/icon_cart"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="#000"
             android:text="购物车" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/profile_text_view"
             android:drawableTop="@mipmap/icon_order"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="#000"
             android:text="订单" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/profile_text_view"
             android:drawableTop="@mipmap/icon_coupon"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="#000"
             android:text="礼券" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/profile_text_view"
             android:drawableTop="@mipmap/icon_follow"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="#000"
             android:text="关注" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/profile_text_view"
             android:drawableTop="@mipmap/icon_service"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="#000"
+
             android:text="客服" />
 
 
@@ -115,7 +91,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#f1efef"/>
+        android:background="#f1efef" />
+
     <RadioGroup
         android:id="@+id/profile_rg"
         android:layout_width="match_parent"
@@ -125,35 +102,20 @@
 
         <RadioButton
             android:id="@+id/profile_single"
-            android:layout_width="0dp"
-            android:layout_height="46dp"
-            android:layout_weight="1"
-            android:text="单品"
-            android:button="@null"
-            android:gravity="center"
-            android:background="@drawable/profile_rb_shape"
-            android:textSize="16sp"/>
+            style="@style/profile_rb"
+            android:text="单品" />
 
         <RadioButton
             android:id="@+id/profile_strategy"
-            android:layout_width="0dp"
-            android:layout_height="46dp"
-            android:layout_weight="1"
-            android:button="@null"
-            android:gravity="center"
-            android:text="攻略"
-            android:background="@drawable/profile_rb_shape"
-            android:textSize="16sp"
-            />
+            style="@style/profile_rb"
+            android:text="攻略" />
     </RadioGroup>
-
-
 
     <FrameLayout
         android:id="@+id/profile_fl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#f1efef"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="#f1efef" />
 
 </LinearLayout>

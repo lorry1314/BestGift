@@ -26,6 +26,7 @@ public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.
     public void setIndex(int index) {
         selectIndex = index;
     }
+
     public void setPopRvItemClick(HomepagePopRvItemClick popRvItemClick) {
         this.popRvItemClick = popRvItemClick;
     }
@@ -50,7 +51,7 @@ public class HomepagePopAdapter extends RecyclerView.Adapter<HomepagePopAdapter.
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         holder.popTv.setText(datas.get(position));
-        holder.popTv.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (popRvItemClick != null && datas.get(position) != null) {

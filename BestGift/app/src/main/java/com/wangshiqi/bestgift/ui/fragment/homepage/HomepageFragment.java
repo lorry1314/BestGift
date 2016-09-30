@@ -1,6 +1,7 @@
 package com.wangshiqi.bestgift.ui.fragment.homepage;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -22,7 +23,6 @@ import com.wangshiqi.bestgift.ui.adapter.HomepageAdapter;
 import com.wangshiqi.bestgift.ui.adapter.HomepagePopAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 import com.wangshiqi.bestgift.utils.HomepagePopRvItemClick;
-import com.wangshiqi.bestgift.utils.ScreenSizeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +42,7 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
     private String[] titles;
     private int selectIndex = 0;
     private TextView searchTv;
+    private PopupWindow pw;
 
     public static HomepageFragment newInstance() {
         Bundle args = new Bundle();
@@ -112,28 +113,31 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
         }
     }
 
+
+
     private void showWindow() {
-        final PopupWindow pw = new PopupWindow(context);
+        pw = new PopupWindow(context);
         pw.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        pw.setHeight(ScreenSizeUtil.getScreenHeight(context) * 2 / 5);
+        pw.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         View v = LayoutInflater.from(context).inflate(R.layout.homepage_popup, null);
         popRv = (RecyclerView) v.findViewById(R.id.pop_rv);
-        pw.setFocusable(true);
+        popIv = (ImageView) v.findViewById(R.id.pop_iv);
         pw.setContentView(v);
+        pw.setBackgroundDrawable(new BitmapDrawable());// 点击popupwindow外部消失
+        pw.setFocusable(true);
         pw.showAsDropDown(homepageRootView);
         homepagePopAdapter = new HomepagePopAdapter(context);
         List<String> datas = new ArrayList<>();
         for (int i = 0; i < 13; i++) {
             datas.add(titles[i]);
         }
-            datas.add(null);
-            datas.add(null);
-            datas.add(null);
+        datas.add(null);
+        datas.add(null);
+        datas.add(null);
         homepagePopAdapter.setDatas(datas);
         popRv.setAdapter(homepagePopAdapter);
-        GridLayoutManager sgm = new GridLayoutManager(context, 4, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager sgm = new GridLayoutManager(context, 4);
         popRv.setLayoutManager(sgm);
-        popIv = (ImageView) v.findViewById(R.id.pop_iv);
         popIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

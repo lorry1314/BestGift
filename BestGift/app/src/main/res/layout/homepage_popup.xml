@@ -11,30 +11,31 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:paddingTop="7dp"
-            android:paddingLeft="10dp"
             android:layout_weight="1"
-            android:textColor="#9d9d9d"
-            android:text="切换频道"/>
+            android:paddingLeft="10dp"
+            android:paddingTop="7dp"
+            android:text="切换频道"
+            android:textColor="#9d9d9d" />
+
         <ImageView
             android:id="@+id/pop_iv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:src="@mipmap/icon_btn_arrow_up"/>
+            android:src="@mipmap/icon_btn_arrow_up" />
     </LinearLayout>
- <View
-     android:layout_width="match_parent"
-     android:layout_height="1dp"
-     android:background="#9d9d9d"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dedcdc" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/pop_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
 
