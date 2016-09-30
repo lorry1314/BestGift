@@ -1,7 +1,6 @@
 package com.wangshiqi.bestgift.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
 import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
@@ -105,7 +104,7 @@ public class Top100RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 holderList.topName.setText(bean.getName());
                 holderList.topDescription.setText(bean.getShort_description());
                 holderList.topPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
-                Picasso.with(context).load(bean.getCover_image_url()).config(Bitmap.Config.RGB_565).into(holderList.topIv);
+                Glide.with(context).load(bean.getCover_image_url()).into(holderList.topIv);
 
                 if (position > 0 && position < 4) {
                     holderList.topTv1.setText(span);
@@ -132,7 +131,7 @@ public class Top100RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 params.width = ScreenSizeUtil.getScreenWidth(context);
                 params.height = ScreenSizeUtil.getScreenHeight(context) * 14 / 48;
                 holderOneImg.coverImageView.setLayoutParams(params);
-                Picasso.with(context).load(imgUrl).config(Bitmap.Config.RGB_565).into(holderOneImg.coverImageView);
+                Glide.with(context).load(imgUrl).into(holderOneImg.coverImageView);
                 break;
         }
 

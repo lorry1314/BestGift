@@ -1,7 +1,6 @@
 package com.wangshiqi.bestgift.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
 import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
@@ -90,7 +89,7 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
         switch (getItemViewType(position)) {
             case TYPE_ITEM:
                 final DailyRvBean.DataBean.ItemsBean bean = datas.get(position - 1);
-                Picasso.with(context).load(bean.getCover_image_url()).config(Bitmap.Config.RGB_565).into(holder.dailyIv);
+                Glide.with(context).load(bean.getCover_image_url()).into(holder.dailyIv);
                 if (bean.getShort_description() != "") {
                     holder.dailyName.setText(bean.getName());
                     holder.dailyDescription.setText(bean.getShort_description());
@@ -116,7 +115,7 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
                 params.width = ScreenSizeUtil.getScreenWidth(context);
                 params.height = ScreenSizeUtil.getScreenHeight(context) * 14 / 48;
                 holder.dailyHeadIv.setLayoutParams(params);
-                Picasso.with(context).load(imgUrl).config(Bitmap.Config.RGB_565).into(holder.dailyHeadIv);
+                Glide.with(context).load(imgUrl).into(holder.dailyHeadIv);
                 break;
         }
     }
