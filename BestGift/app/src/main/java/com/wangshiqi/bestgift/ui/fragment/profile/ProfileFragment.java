@@ -3,21 +3,25 @@ package com.wangshiqi.bestgift.ui.fragment.profile;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.wangshiqi.bestgift.R;
+import com.wangshiqi.bestgift.ui.activity.LoginActivity;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
 /**
  * - Created by dllo on 16/9/8.
  * 个人界面
  */
-public class ProfileFragment extends AbsFragment {
+public class ProfileFragment extends AbsFragment implements View.OnClickListener {
 
 
     private RadioGroup radioGroup;
     private ProfileSingleFragment fragmentProfileSingle;
     private ProfileStrategyFragment fragmentProfileStrategy;
+    private ImageView boyIv;
 
     public static ProfileFragment newInstance() {
 
@@ -35,6 +39,7 @@ public class ProfileFragment extends AbsFragment {
     @Override
     protected void initView() {
         radioGroup = byView(R.id.profile_rg);
+        boyIv = byView(R.id.boy);
     }
 
     @Override
@@ -60,5 +65,15 @@ public class ProfileFragment extends AbsFragment {
             }
         });
         radioGroup.check(R.id.profile_single);
+        boyIv.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.boy:
+                goTo(LoginActivity.class);
+                break;
+        }
     }
 }

@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.wangshiqi.bestgift.R;
+import com.wangshiqi.bestgift.ui.activity.SearchActivity;
 import com.wangshiqi.bestgift.ui.adapter.CategoryAdapter;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
@@ -21,6 +24,7 @@ public class CategoryFragment extends AbsFragment {
     private ViewPager categoryVp;
     private TabLayout categoryTb;
     private CategoryAdapter categoryAdapter;
+    private RelativeLayout searchRl;
 
     public static CategoryFragment newInstance() {
 
@@ -38,6 +42,7 @@ public class CategoryFragment extends AbsFragment {
     protected void initView() {
         categoryTb = byView(R.id.category_tb);
         categoryVp = byView(R.id.category_vp);
+        searchRl = byView(R.id.search_rl);
     }
     @Override
     protected void initDatas() {
@@ -51,5 +56,11 @@ public class CategoryFragment extends AbsFragment {
         for (int i = 0; i < 2; i++) {
             categoryTb.getTabAt(i).setText(titles[i]);
         }
+        searchRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(SearchActivity.class);
+            }
+        });
     }
 }

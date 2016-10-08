@@ -24,6 +24,7 @@
         </android.support.design.widget.TabLayout>
         </LinearLayout>
     <RelativeLayout
+        android:id="@+id/search_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/category_search_margin"
