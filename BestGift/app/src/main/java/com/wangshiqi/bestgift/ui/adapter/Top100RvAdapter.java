@@ -11,6 +11,7 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,7 +19,6 @@ import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
 import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
 import com.wangshiqi.bestgift.utils.ScreenSizeUtil;
-import com.wangshiqi.bestgift.view.RecyclableImageView;
 
 import java.util.List;
 
@@ -154,22 +154,22 @@ public class Top100RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
     class HolderOneImg extends RecyclerView.ViewHolder {
-        RecyclableImageView coverImageView;
+        ImageView coverImageView;
 
         public HolderOneImg(View itemView) {
             super(itemView);
-            coverImageView = (RecyclableImageView) itemView.findViewById(R.id.daily_header_iv);
+            coverImageView = (ImageView) itemView.findViewById(R.id.daily_header_iv);
         }
     }
 
 
     class HolderList extends RecyclerView.ViewHolder {
-        RecyclableImageView topIv;
+        ImageView topIv;
         TextView topName, topDescription, topPrice, topTv1, topTv2;
 
         public HolderList(View itemView) {
             super(itemView);
-            topIv = (RecyclableImageView) itemView.findViewById(R.id.top_item_iv);
+            topIv = (ImageView) itemView.findViewById(R.id.top_item_iv);
             topDescription = (TextView) itemView.findViewById(R.id.top_item_short_description);
             topName = (TextView) itemView.findViewById(R.id.top_item_name);
             topPrice = (TextView) itemView.findViewById(R.id.top_item_price);

@@ -14,7 +14,6 @@ import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.DailyRvBean;
 import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
 import com.wangshiqi.bestgift.utils.ScreenSizeUtil;
-import com.wangshiqi.bestgift.view.RecyclableImageView;
 
 import java.util.List;
 
@@ -138,17 +137,17 @@ public class DailyRvAdapter extends RecyclerView.Adapter<DailyRvAdapter.ViewHold
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        RecyclableImageView dailyIv;
+        ImageView dailyIv;
         ImageView dailyHeadIv;
         TextView dailyName, dailyDescription, dailyPrice;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            dailyIv = (RecyclableImageView) itemView.findViewById(R.id.daily_item_iv);
+            dailyIv = (ImageView) itemView.findViewById(R.id.daily_item_iv);
             dailyDescription = (TextView) itemView.findViewById(R.id.daily_item_short_description);
             dailyName = (TextView) itemView.findViewById(R.id.daily_item_name);
             dailyPrice = (TextView) itemView.findViewById(R.id.daily_item_price);
-            dailyHeadIv = (RecyclableImageView) itemView.findViewById(R.id.daily_header_iv);
+            dailyHeadIv = (ImageView) itemView.findViewById(R.id.daily_header_iv);
         }
     }
 }

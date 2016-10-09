@@ -5,13 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.LiteOrmBean;
 import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
-import com.wangshiqi.bestgift.view.RecyclableImageView;
 
 import java.util.List;
 
@@ -38,7 +38,9 @@ public class CollectionRvAdapter extends RecyclerView.Adapter<CollectionRvAdapte
         notifyDataSetChanged();
     }
 
-    @Override
+
+
+        @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_daily_rv, parent, false);
         return new ViewHolder(view);
@@ -46,8 +48,8 @@ public class CollectionRvAdapter extends RecyclerView.Adapter<CollectionRvAdapte
 
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        final LiteOrmBean bean = datas.get(position);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        LiteOrmBean bean = datas.get(position);
         Glide.with(context).load(bean.getImgUrl()).into(holder.dailyIv);
         if (bean.getDescription() != "") {
             holder.dailyName.setText(bean.getName());
@@ -78,12 +80,12 @@ public class CollectionRvAdapter extends RecyclerView.Adapter<CollectionRvAdapte
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        RecyclableImageView dailyIv;
+        ImageView dailyIv;
         TextView dailyName, dailyDescription, dailyPrice;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            dailyIv = (RecyclableImageView) itemView.findViewById(R.id.daily_item_iv);
+            dailyIv = (ImageView) itemView.findViewById(R.id.daily_item_iv);
             dailyDescription = (TextView) itemView.findViewById(R.id.daily_item_short_description);
             dailyName = (TextView) itemView.findViewById(R.id.daily_item_name);
             dailyPrice = (TextView) itemView.findViewById(R.id.daily_item_price);

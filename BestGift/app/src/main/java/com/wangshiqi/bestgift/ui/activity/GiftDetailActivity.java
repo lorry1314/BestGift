@@ -8,6 +8,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.LiteOrmBean;
@@ -21,6 +22,7 @@ public class GiftDetailActivity extends AbsBaseActivity {
     private Button goToTaobao;
     private ImageView collectIv;
 
+    private boolean isCollect = false;
     @Override
     protected int setLayout() {
         return R.layout.activity_giftdetail;
@@ -65,11 +67,26 @@ public class GiftDetailActivity extends AbsBaseActivity {
         collectIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LiteOrmBean bean = new LiteOrmBean(name, description, price, imgUrl);
-                LiteOrmInstance.getLiteOrmInstance().insert(bean);
+                if (isCollect == false) {
+                    collectIv.setImageResource(R.mipmap.ic_action_compact_favourite_selected);
+                    LiteOrmBean bean = new LiteOrmBean(name, description, price, imgUrl);
+                    LiteOrmInstance.getLiteOrmInstance().insert(bean);
+                    Toast.makeText(GiftDetailActivity.this, "已收藏", Toast.LENGTH_SHORT).show();
+                    isCollect = true;
+                }else {
+                    collectIv.setImageResource(R.mipmap.ic_action_compact_favourite_normal);
+                    LiteOrmInstance.getLiteOrmInstance().deleteByName(name);
+                    Toast.makeText(GiftDetailActivity.this, "取消收藏", Toast.LENGTH_SHORT).show();
+                    isCollect = false;
+                }
             }
         });
+        if (LiteOrmInstance.getLiteOrmInstance().queryByName(name).size() > 0) {
+            collectIv.setImageResource(R.mipmap.ic_action_compact_favourite_selected);
+            isCollect = true;
+        }
     }
+
 
 
 
