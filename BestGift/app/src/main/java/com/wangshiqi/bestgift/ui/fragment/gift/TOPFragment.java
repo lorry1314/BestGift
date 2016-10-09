@@ -74,6 +74,10 @@ public class TOPFragment extends AbsFragment implements IVolleyResult {
                 Intent intent = new Intent(context, GiftDetailActivity.class);
                 intent.putExtra("url", datas.get(positon - 1).getUrl());
                 intent.putExtra("taobaoUrl", datas.get(positon - 1).getPurchase_url());
+                intent.putExtra("imgUrl", datas.get(positon - 1).getCover_image_url());
+                intent.putExtra("name", datas.get(positon - 1).getName());
+                intent.putExtra("description", datas.get(positon - 1).getShort_description());
+                intent.putExtra("price", datas.get(positon - 1).getPrice());
                 startActivity(intent);
             }
         });

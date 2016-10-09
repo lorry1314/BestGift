@@ -21,7 +21,7 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
     private RadioGroup radioGroup;
     private ProfileSingleFragment fragmentProfileSingle;
     private ProfileStrategyFragment fragmentProfileStrategy;
-    private ImageView boyIv;
+    private ImageView boyIv, msgIv;
 
     public static ProfileFragment newInstance() {
 
@@ -40,6 +40,8 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
     protected void initView() {
         radioGroup = byView(R.id.profile_rg);
         boyIv = byView(R.id.boy);
+        msgIv = byView(R.id.message);
+
     }
 
     @Override
@@ -66,12 +68,16 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
         });
         radioGroup.check(R.id.profile_single);
         boyIv.setOnClickListener(this);
+        msgIv.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.boy:
+                goTo(LoginActivity.class);
+                break;
+            case R.id.message:
                 goTo(LoginActivity.class);
                 break;
         }

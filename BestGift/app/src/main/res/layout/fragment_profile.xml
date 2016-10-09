@@ -82,10 +82,7 @@
         <TextView
             style="@style/profile_text_view"
             android:drawableTop="@mipmap/icon_service"
-
             android:text="客服" />
-
-
     </LinearLayout>
 
     <View

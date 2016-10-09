@@ -18,8 +18,10 @@
             android:layout_marginLeft="15dp"
             android:background="@drawable/shape"
             android:drawableLeft="@mipmap/icon_search_grey"
+            android:drawablePadding="10dp"
             android:hint="@string/search_text"
             android:padding="5dp"
+            android:textCursorDrawable="@null"
             android:textSize="12sp" />
 
         <TextView
