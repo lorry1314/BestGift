@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class LiteOrmInstance {
     private LiteOrm liteOrm;
-
+    private static final String DB_NAME = "collect.db";
     private LiteOrmInstance() {
-        liteOrm = LiteOrm.newSingleInstance(BestGiftApp.getContext(), "collect.db");
+        liteOrm = LiteOrm.newSingleInstance(BestGiftApp.getContext(), DB_NAME);
         liteOrm.setDebugged(true);
 
     }
@@ -39,9 +39,9 @@ public class LiteOrmInstance {
         return liteOrm.save(t);
     }
 
-    public void deleteByName(String name) {
+    public void deleteByName(Object name) {
         WhereBuilder whereBuilder = new WhereBuilder(LiteOrmBean.class);
-        whereBuilder.where("name = ?", new String[]{name});
+        whereBuilder.where("name = ?", new Object[]{name});
         liteOrm.delete(whereBuilder);
     }
     /**
@@ -55,9 +55,9 @@ public class LiteOrmInstance {
      * 按name查询数据
      */
 
-    public List<LiteOrmBean> queryByName(String name) {
+    public List<LiteOrmBean> queryByName(Object name) {
         QueryBuilder<LiteOrmBean> qb = new QueryBuilder<>(LiteOrmBean.class);
-        qb.where("name = ?", new String[]{name});
+        qb.where("name = ?", new Object[]{name});
         return liteOrm.query(qb);
     }
 
@@ -80,7 +80,7 @@ public class LiteOrmInstance {
      * @param value
      * @return
      */
-    public <T> List<T> getQueryByWhere(Class<T> cla, String field, String[] value) {
+    public <T> List<T> getQueryByWhere(Class<T> cla, Object field, Object[] value) {
         return liteOrm.<T>query(new QueryBuilder(cla).where(field + "=?", value));
     }
 

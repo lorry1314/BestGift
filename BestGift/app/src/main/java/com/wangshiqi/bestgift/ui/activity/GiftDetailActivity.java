@@ -81,7 +81,7 @@ public class GiftDetailActivity extends AbsBaseActivity {
                 }
             }
         });
-        if (LiteOrmInstance.getLiteOrmInstance().queryByName(name).size() > 0) {
+        if (LiteOrmInstance.getLiteOrmInstance().queryByName(name).size() != 0) {
             collectIv.setImageResource(R.mipmap.ic_action_compact_favourite_selected);
             isCollect = true;
         }
