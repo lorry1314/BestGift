@@ -70,7 +70,7 @@ public class DailyFragment extends AbsFragment implements IVolleyResult {
         dailyRvAdapter.setDatas(datas, imgUrl);
         dailyRvAdapter.setGiftOnRvItemClick(new GiftOnRvItemClick() {
             @Override
-            public void onRvItemClickListener(int positon, DailyRvBean.DataBean.ItemsBean data) {
+            public void onRvItemClickListener(int positon, Object o) {
                 Intent intent = new Intent(context, GiftDetailActivity.class);
                 intent.putExtra("url", datas.get(positon - 1).getUrl());
                 intent.putExtra("taobaoUrl", datas.get(positon - 1).getPurchase_url());

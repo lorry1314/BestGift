@@ -15,6 +15,7 @@ import java.util.List;
 public class LiteOrmInstance {
     private LiteOrm liteOrm;
     private static final String DB_NAME = "collect.db";
+
     private LiteOrmInstance() {
         liteOrm = LiteOrm.newSingleInstance(BestGiftApp.getContext(), DB_NAME);
         liteOrm.setDebugged(true);
@@ -44,6 +45,7 @@ public class LiteOrmInstance {
         whereBuilder.where("name = ?", new Object[]{name});
         liteOrm.delete(whereBuilder);
     }
+
     /**
      * 删除数据库所有数据
      */
@@ -60,7 +62,7 @@ public class LiteOrmInstance {
         qb.where("name = ?", new Object[]{name});
         return liteOrm.query(qb);
     }
-
+   /********************************************************************************/
     /**
      * 查询所有
      *

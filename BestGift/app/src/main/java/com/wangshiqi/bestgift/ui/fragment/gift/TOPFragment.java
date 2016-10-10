@@ -50,7 +50,7 @@ public class TOPFragment extends AbsFragment implements IVolleyResult {
         Bundle bundle = getArguments();
         String string = bundle.getString("url");
         topRvAdapter = new Top100RvAdapter(context);
-        GridLayoutManager manager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false){
+        GridLayoutManager manager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -70,7 +70,7 @@ public class TOPFragment extends AbsFragment implements IVolleyResult {
         topRvAdapter.setDatas(datas, imgUrl);
         topRvAdapter.setGiftOnRvItemClick(new GiftOnRvItemClick() {
             @Override
-            public void onRvItemClickListener(int positon, DailyRvBean.DataBean.ItemsBean data) {
+            public void onRvItemClickListener(int positon, Object o) {
                 Intent intent = new Intent(context, GiftDetailActivity.class);
                 intent.putExtra("url", datas.get(positon - 1).getUrl());
                 intent.putExtra("taobaoUrl", datas.get(positon - 1).getPurchase_url());
@@ -80,6 +80,8 @@ public class TOPFragment extends AbsFragment implements IVolleyResult {
                 intent.putExtra("price", datas.get(positon - 1).getPrice());
                 startActivity(intent);
             }
+
+
         });
     }
 

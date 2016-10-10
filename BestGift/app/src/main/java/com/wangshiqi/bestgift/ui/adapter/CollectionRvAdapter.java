@@ -48,8 +48,8 @@ public class CollectionRvAdapter extends RecyclerView.Adapter<CollectionRvAdapte
 
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        LiteOrmBean bean = datas.get(position);
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        final LiteOrmBean bean = datas.get(position);
         Glide.with(context).load(bean.getImgUrl()).into(holder.dailyIv);
         if (bean.getDescription() != "") {
             holder.dailyName.setText(bean.getName());
@@ -60,6 +60,15 @@ public class CollectionRvAdapter extends RecyclerView.Adapter<CollectionRvAdapte
             holder.dailyName.setText("");
             holder.dailyPrice.setText("￥ " + subZeroAndDot(bean.getPrice()));
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (giftOnRvItemClick != null) {
+                    int p = holder.getLayoutPosition();
+                    giftOnRvItemClick.onRvItemClickListener(p, bean);
+                }
+            }
+        });
     }
 
     /**

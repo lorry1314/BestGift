@@ -29,14 +29,16 @@ public class LoginActivity extends AbsBaseActivity implements View.OnClickListen
         userName = byView(R.id.login_user_et);
         passWord = byView(R.id.login_password_et);
         sp = getSharedPreferences("userInfo", MODE_PRIVATE);
+
     }
 
     @Override
     protected void initDatas() {
         closeBtn.setOnClickListener(this);
         loginBtn.setOnClickListener(this);
-            userName.setText(sp.getString("userName", ""));
-            passWord.setText(sp.getString("passWord", ""));
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("isLogin", false);
+//        editor.putString()
     }
 
     @Override

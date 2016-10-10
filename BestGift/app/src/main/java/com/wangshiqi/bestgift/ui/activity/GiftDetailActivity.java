@@ -53,7 +53,7 @@ public class GiftDetailActivity extends AbsBaseActivity {
         final String name = intent.getStringExtra("name");
         final String price = intent.getStringExtra("price");
         final String description = intent.getStringExtra("description");
-        String url = intent.getStringExtra("url");
+        final String url = intent.getStringExtra("url");
         final String taobaoUrl = intent.getStringExtra("taobaoUrl");
         giftDetailWb.loadUrl(url);
         goToTaobao.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class GiftDetailActivity extends AbsBaseActivity {
             public void onClick(View v) {
                 if (isCollect == false) {
                     collectIv.setImageResource(R.mipmap.ic_action_compact_favourite_selected);
-                    LiteOrmBean bean = new LiteOrmBean(name, description, price, imgUrl);
+                    LiteOrmBean bean = new LiteOrmBean(name, description, price, imgUrl, url, taobaoUrl);
                     LiteOrmInstance.getLiteOrmInstance().insert(bean);
                     Toast.makeText(GiftDetailActivity.this, "已收藏", Toast.LENGTH_SHORT).show();
                     isCollect = true;

@@ -16,8 +16,43 @@ public class LiteOrmBean {
     private String description;
     private String price;
     private String imgUrl;
+    private String webUrl;
+    private String taobaoUrl;
+
+    public String getTaobaoUrl() {
+        return taobaoUrl;
+    }
+
+    public void setTaobaoUrl(String taobaoUrl) {
+        this.taobaoUrl = taobaoUrl;
+    }
+
+    public LiteOrmBean(String name, String description, String price, String imgUrl, String webUrl, String taobaoUrl) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
+        this.webUrl = webUrl;
+        this.taobaoUrl = taobaoUrl;
+    }
 
     public LiteOrmBean() {
+    }
+
+    public LiteOrmBean(String name, String description, String price, String imgUrl, String webUrl) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
+        this.webUrl = webUrl;
+    }
+
+    public String getWebUrl() {
+        return webUrl;
+    }
+
+    public void setWebUrl(String webUrl) {
+        this.webUrl = webUrl;
     }
 
     public LiteOrmBean(int id, String name, String description, String price, String imgUrl) {

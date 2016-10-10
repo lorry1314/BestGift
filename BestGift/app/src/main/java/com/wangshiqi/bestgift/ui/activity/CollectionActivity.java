@@ -1,5 +1,6 @@
 package com.wangshiqi.bestgift.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.LiteOrmBean;
 import com.wangshiqi.bestgift.model.db.LiteOrmInstance;
 import com.wangshiqi.bestgift.ui.adapter.CollectionRvAdapter;
+import com.wangshiqi.bestgift.utils.GiftOnRvItemClick;
 
 import java.util.List;
 
@@ -19,7 +21,7 @@ import java.util.List;
  */
 public class CollectionActivity extends AbsBaseActivity {
     private RecyclerView collectionRv;
-    private CollectionRvAdapter dailyRvAdapter;
+    private CollectionRvAdapter collectionRvAdapter;
     private ImageView collectionBackIv;
 
     @Override
@@ -35,16 +37,26 @@ public class CollectionActivity extends AbsBaseActivity {
 
     @Override
     protected void initDatas() {
-        dailyRvAdapter = new CollectionRvAdapter(this);
+        collectionRvAdapter = new CollectionRvAdapter(this);
         GridLayoutManager manager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         collectionRv.setLayoutManager(manager);
-        List<LiteOrmBean> bean = LiteOrmInstance.getLiteOrmInstance().getQueryAll(LiteOrmBean.class);
-        dailyRvAdapter.setDatas(bean);
-        collectionRv.setAdapter(dailyRvAdapter);
+        final List<LiteOrmBean> bean = LiteOrmInstance.getLiteOrmInstance().getQueryAll(LiteOrmBean.class);
+        collectionRvAdapter.setDatas(bean);
+        collectionRv.setAdapter(collectionRvAdapter);
         collectionBackIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        collectionRvAdapter.setGiftOnRvItemClick(new GiftOnRvItemClick() {
+            @Override
+            public void onRvItemClickListener(int positon, Object o) {
+                Intent intent = new Intent(CollectionActivity.this, GiftDetailActivity.class);
+                intent.putExtra("url", bean.get(positon).getWebUrl());
+                intent.putExtra("name", bean.get(positon).getName());
+                intent.putExtra("taobaoUrl", bean.get(positon).getTaobaoUrl());
+                startActivity(intent);
             }
         });
     }
