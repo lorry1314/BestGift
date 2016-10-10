@@ -64,6 +64,7 @@ public class GiftDetailActivity extends AbsBaseActivity {
                 goTo(GiftDetailActivity.this, TaobaoShoppingActivity.class, bundle);
             }
         });
+
         collectIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,12 +72,12 @@ public class GiftDetailActivity extends AbsBaseActivity {
                     collectIv.setImageResource(R.mipmap.ic_action_compact_favourite_selected);
                     LiteOrmBean bean = new LiteOrmBean(name, description, price, imgUrl, url, taobaoUrl);
                     LiteOrmInstance.getLiteOrmInstance().insert(bean);
-                    Toast.makeText(GiftDetailActivity.this, "已收藏", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GiftDetailActivity.this, "喜欢成功", Toast.LENGTH_SHORT).show();
                     isCollect = true;
                 }else {
                     collectIv.setImageResource(R.mipmap.ic_action_compact_favourite_normal);
                     LiteOrmInstance.getLiteOrmInstance().deleteByName(name);
-                    Toast.makeText(GiftDetailActivity.this, "取消收藏", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GiftDetailActivity.this, "取消喜欢成功", Toast.LENGTH_SHORT).show();
                     isCollect = false;
                 }
             }

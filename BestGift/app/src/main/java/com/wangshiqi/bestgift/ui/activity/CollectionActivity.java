@@ -37,18 +37,24 @@ public class CollectionActivity extends AbsBaseActivity {
 
     @Override
     protected void initDatas() {
-        collectionRvAdapter = new CollectionRvAdapter(this);
-        GridLayoutManager manager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
-        collectionRv.setLayoutManager(manager);
-        final List<LiteOrmBean> bean = LiteOrmInstance.getLiteOrmInstance().getQueryAll(LiteOrmBean.class);
-        collectionRvAdapter.setDatas(bean);
-        collectionRv.setAdapter(collectionRvAdapter);
         collectionBackIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        collectionRvAdapter = new CollectionRvAdapter(this);
+        GridLayoutManager manager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
+        collectionRv.setLayoutManager(manager);
+        final List<LiteOrmBean> bean = LiteOrmInstance.getLiteOrmInstance().getQueryAll(LiteOrmBean.class);
+        collectionRvAdapter.setDatas(bean);
+        collectionRv.setAdapter(collectionRvAdapter);
         collectionRvAdapter.setGiftOnRvItemClick(new GiftOnRvItemClick() {
             @Override
             public void onRvItemClickListener(int positon, Object o) {
