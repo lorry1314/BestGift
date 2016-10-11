@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.LiteOrmBean;
@@ -23,6 +24,7 @@ public class CollectionActivity extends AbsBaseActivity {
     private RecyclerView collectionRv;
     private CollectionRvAdapter collectionRvAdapter;
     private ImageView collectionBackIv;
+    private RelativeLayout relativeLayout;
 
     @Override
     protected int setLayout() {
@@ -33,6 +35,7 @@ public class CollectionActivity extends AbsBaseActivity {
     protected void initViews() {
         collectionRv = byView(R.id.collection_rv);
         collectionBackIv = byView(R.id.collection_back_iv);
+        relativeLayout = byView(R.id.collection_rl);
     }
 
     @Override
@@ -43,7 +46,6 @@ public class CollectionActivity extends AbsBaseActivity {
                 finish();
             }
         });
-
     }
 
     @Override
@@ -65,5 +67,10 @@ public class CollectionActivity extends AbsBaseActivity {
                 startActivity(intent);
             }
         });
+        if (bean.isEmpty()) {
+            relativeLayout.setVisibility(View.VISIBLE);
+        } else {
+            relativeLayout.setVisibility(View.INVISIBLE);
+        }
     }
 }
