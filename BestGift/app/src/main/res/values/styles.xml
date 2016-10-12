@@ -113,9 +113,9 @@
     </style>
     <style name="setting_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">60dp</item>
         <item name="android:background">#fff</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:paddingRight">10dp</item>
     </style>
     <style name ="setting_textsize">
         <item name="android:layout_width">wrap_content</item>
@@ -134,5 +134,15 @@
     <style name="setting_img">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="setting_view_bottom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">#e7e7e7</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
     </style>
 </resources>

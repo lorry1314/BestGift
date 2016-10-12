@@ -3,22 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    >
+    android:scrollbars="none">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <View
             android:layout_width="match_parent"
             android:layout_height="12dp"
-            android:background="#e7e7e7"/>
+            android:background="#e7e7e7" />
 
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
                 android:id="@+id/img_identify"
-                android:src="@mipmap/icon_more_identify"
-                style="@style/setting_img" />
+                style="@style/setting_img"
+                android:src="@mipmap/icon_more_identify" />
 
             <TextView
                 style="@style/setting_textsize"
@@ -34,7 +36,9 @@
                 android:gravity="right"
                 android:text="男孩  大学生  " />
         </RelativeLayout>
+
         <View style="@style/setting_view" />
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
@@ -53,10 +57,13 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:drawableRight="@mipmap/ic_chevron"
-                android:gravity="right"
-                />
+                android:gravity="right" />
 
+            <View
+                style="@style/setting_view_bottom"
+                android:layout_toRightOf="@id/img_share" />
         </RelativeLayout>
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
@@ -77,9 +84,13 @@
                 android:drawableRight="@mipmap/ic_chevron"
                 android:gravity="right"
                 android:text="奖励五积分  "
-                android:textColor="#f5a262"
-                />
+                android:textColor="#f5a262" />
+
+            <View
+                style="@style/setting_view_bottom"
+                android:layout_toRightOf="@id/img_score" />
         </RelativeLayout>
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
@@ -98,10 +109,13 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:drawableRight="@mipmap/ic_chevron"
-                android:gravity="right"
-                />
+                android:gravity="right" />
 
+            <View
+                style="@style/setting_view_bottom"
+                android:layout_toRightOf="@id/img_feedback" />
         </RelativeLayout>
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
@@ -120,17 +134,17 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:gravity="right"
-                android:text="4009992053"
-                />
+                android:text="4009992053" />
 
         </RelativeLayout>
-        <View
-           style="@style/setting_view"/>
+
+        <View style="@style/setting_view" />
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
                 android:id="@+id/img_like_list"
-                android:layout_marginTop="6dp"
+
                 style="@style/setting_img"
                 android:src="@mipmap/ic_default_like_list" />
 
@@ -145,10 +159,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:background="@null"
-                android:track="@mipmap/bg_switch_selected"
-                android:thumb="@mipmap/fg_switch"/>
+                android:thumb="@mipmap/fg_switch"
+                android:track="@drawable/setting_switch_track" />
+
+            <View
+                style="@style/setting_view_bottom"
+                android:layout_toRightOf="@id/img_like_list" />
         </RelativeLayout>
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
@@ -166,11 +186,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:gravity="right"
                 android:drawableRight="@mipmap/ic_chevron"
-                />
+                android:gravity="right" />
+
+            <View
+                style="@style/setting_view_bottom"
+                android:layout_toRightOf="@id/img_notifacation" />
 
         </RelativeLayout>
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
@@ -188,10 +212,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:gravity="right"
-                />
+                android:gravity="right" />
 
+            <View
+                style="@style/setting_view_bottom"
+                android:layout_toRightOf="@id/img_check_update" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/setting_rl"
             style="@style/setting_style">
@@ -212,13 +239,16 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:gravity="right"
                 android:drawablePadding="10dp"
                 android:drawableRight="@mipmap/ic_chevron"
-                android:text="mb "
-                />
+                android:gravity="right"
+                android:text="mb " />
 
+            <View
+                style="@style/setting_view_bottom"
+                android:layout_toRightOf="@id/img_clean" />
         </RelativeLayout>
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
@@ -236,13 +266,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:gravity="right"
                 android:drawableRight="@mipmap/ic_chevron"
-                />
+                android:gravity="right" />
 
         </RelativeLayout>
 
         <View style="@style/setting_view" />
+
         <RelativeLayout style="@style/setting_style">
 
             <ImageView
@@ -260,15 +290,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:gravity="right"
                 android:drawableRight="@mipmap/ic_chevron"
-                />
+                android:gravity="right" />
 
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="12dp"
-            android:background="#e7e7e7"/>
+            android:background="#e7e7e7" />
     </LinearLayout>
 
 </ScrollView>
