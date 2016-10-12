@@ -49,6 +49,7 @@ public class WelcomeActivity extends AbsBaseActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             goTo(WelcomeActivity.this, MainActivity.class);
+            finish();
         }
     }
 }

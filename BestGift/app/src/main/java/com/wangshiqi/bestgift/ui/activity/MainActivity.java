@@ -92,7 +92,6 @@ public class MainActivity extends AbsBaseActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.remove("name");
             editor.remove("icon");
-//            editor.clear();
             editor.commit();
             finish();
             System.exit(0);
