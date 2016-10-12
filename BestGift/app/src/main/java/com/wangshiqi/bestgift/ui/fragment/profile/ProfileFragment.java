@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.ui.activity.LoginActivity;
+import com.wangshiqi.bestgift.ui.activity.SettingActivity;
 import com.wangshiqi.bestgift.ui.fragment.AbsFragment;
 
 /**
@@ -22,6 +23,7 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
     private ProfileSingleFragment fragmentProfileSingle;
     private ProfileStrategyFragment fragmentProfileStrategy;
     private ImageView boyIv, msgIv;
+    private ImageView setIv;
 
     public static ProfileFragment newInstance() {
 
@@ -41,7 +43,7 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
         radioGroup = byView(R.id.profile_rg);
         boyIv = byView(R.id.boy);
         msgIv = byView(R.id.message);
-
+        setIv = byView(R.id.setting);
     }
 
     @Override
@@ -69,6 +71,7 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
         radioGroup.check(R.id.profile_single);
         boyIv.setOnClickListener(this);
         msgIv.setOnClickListener(this);
+        setIv.setOnClickListener(this);
     }
 
     @Override
@@ -79,6 +82,9 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
                 break;
             case R.id.message:
                 goTo(LoginActivity.class);
+                break;
+            case R.id.setting:
+                goTo(SettingActivity.class);
                 break;
         }
     }
