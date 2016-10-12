@@ -69,11 +69,15 @@ public class LoginActivity extends AbsBaseActivity implements View.OnClickListen
         platform.setPlatformActionListener(new PlatformActionListener() {
             @Override
             public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                Toast.makeText(LoginActivity.this, "完成", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                 PlatformDb db = platform.getDb();
                 String name = db.getUserName();
                 String icon = db.getUserIcon();
-//                finish();
+                sp = getSharedPreferences("login", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("name", name);
+                editor.putString("icon", icon);
+                editor.commit();
             }
 
             @Override
@@ -86,5 +90,6 @@ public class LoginActivity extends AbsBaseActivity implements View.OnClickListen
                 Toast.makeText(LoginActivity.this, "取消", Toast.LENGTH_SHORT).show();
             }
         });
+        finish();
     }
 }

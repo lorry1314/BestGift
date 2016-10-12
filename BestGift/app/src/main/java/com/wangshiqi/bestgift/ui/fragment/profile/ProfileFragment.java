@@ -1,12 +1,16 @@
 package com.wangshiqi.bestgift.ui.fragment.profile;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.ui.activity.LoginActivity;
 import com.wangshiqi.bestgift.ui.activity.SettingActivity;
@@ -24,6 +28,8 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
     private ProfileStrategyFragment fragmentProfileStrategy;
     private ImageView boyIv, msgIv;
     private ImageView setIv;
+    private TextView loginTv;
+    private SharedPreferences sharedPreferences;
 
     public static ProfileFragment newInstance() {
 
@@ -44,6 +50,8 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
         boyIv = byView(R.id.boy);
         msgIv = byView(R.id.message);
         setIv = byView(R.id.setting);
+        loginTv = byView(R.id.profile_login_tv);
+
     }
 
     @Override
@@ -62,7 +70,6 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
                         break;
                     case R.id.profile_strategy:
                         transaction.replace(R.id.profile_fl, fragmentProfileStrategy);
-
                         break;
                 }
                 transaction.commit();
@@ -88,4 +95,18 @@ public class ProfileFragment extends AbsFragment implements View.OnClickListener
                 break;
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sharedPreferences = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        String name = sharedPreferences.getString("name", "");
+        String icon = sharedPreferences.getString("icon", "");
+        if (!icon.isEmpty()) {
+            Picasso.with(context).load(icon).into(boyIv);
+            loginTv.setText(name);
+        }
+    }
+
+
 }

@@ -36,14 +36,16 @@
             android:padding="4dp"
             android:src="@mipmap/ic_toolkit_zebra_scanner" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/boy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
             android:src="@mipmap/me_avatar_boy" />
 
         <TextView
+            android:id="@+id/profile_login_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/boy"

@@ -1,5 +1,6 @@
 package com.wangshiqi.bestgift.ui.activity;
 
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
@@ -87,6 +88,12 @@ public class MainActivity extends AbsBaseActivity {
             // 利用handler延迟发送更改状态信息
             mHandler.sendEmptyMessageDelayed(0, 2000);
         } else {
+            SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("name");
+            editor.remove("icon");
+//            editor.clear();
+            editor.commit();
             finish();
             System.exit(0);
         }
