@@ -1,6 +1,5 @@
 package com.wangshiqi.bestgift.ui.fragment.homepage;
 
-import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -109,11 +108,10 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
                 showWindow(); // popwindow弹出方法
                 break;
             case R.id.homepage_search_tv:
-                startActivity(new Intent(context, SearchActivity.class));
+                goTo(SearchActivity.class);
                 break;
         }
     }
-
 
 
     private void showWindow() {
@@ -124,13 +122,14 @@ public class HomepageFragment extends AbsFragment implements View.OnClickListene
         popRv = (RecyclerView) v.findViewById(R.id.pop_rv);
         popIv = (ImageView) v.findViewById(R.id.pop_iv);
         pw.setContentView(v);
-        pw.setBackgroundDrawable(new BitmapDrawable());// 点击popupwindow外部消失
+        pw.setBackgroundDrawable(new BitmapDrawable());
         pw.setFocusable(true);
         pw.showAsDropDown(homepageRootView);
         homepagePopAdapter = new HomepagePopAdapter(context);
         List<String> datas = new ArrayList<>();
         for (int i = 0; i < 13; i++) {
             datas.add(titles[i]);
+
         }
         datas.add(null);
         datas.add(null);

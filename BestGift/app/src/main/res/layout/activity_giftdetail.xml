@@ -41,6 +41,7 @@
                 android:src="@mipmap/ic_action_compact_favourite_normal" />
 
             <ImageView
+                android:id="@+id/gift_detail_share"
                 style="@style/giftdetail_img"
                 android:layout_marginLeft="10dp"
                 android:src="@mipmap/ic_action_compact_share" />

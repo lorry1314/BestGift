@@ -59,14 +59,14 @@ public class Top100RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
-            case TYPE_ITEM:
-                View viewList = LayoutInflater.from(context).inflate(R.layout.item_top100_rv, parent, false);
-                HolderList holderList = new HolderList(viewList);
-                return holderList;
             case TYPE_HEAD:
                 View view = LayoutInflater.from(context).inflate(R.layout.item_daily_head, parent, false);
                 HolderOneImg holderOneImg = new HolderOneImg(view);
                 return holderOneImg;
+            case TYPE_ITEM:
+                View viewList = LayoutInflater.from(context).inflate(R.layout.item_top100_rv, parent, false);
+                HolderList holderList = new HolderList(viewList);
+            return holderList;
         }
         return null;
     }
@@ -80,6 +80,7 @@ public class Top100RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
+                    // 个人观点(从位置0跨列到1)
                     return getItemViewType(position) == TYPE_HEAD ? gridLayoutManager.getSpanCount() : 1;
                 }
             });
@@ -129,7 +130,7 @@ public class Top100RvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 HolderOneImg holderOneImg = (HolderOneImg) holder;
                 ViewGroup.LayoutParams params = holderOneImg.coverImageView.getLayoutParams();
                 params.width = ScreenSizeUtil.getScreenWidth(context);
-                params.height = ScreenSizeUtil.getScreenHeight(context) * 14 / 48;
+                params.height = ScreenSizeUtil.getScreenHeight(context) * 7 / 24;
                 holderOneImg.coverImageView.setLayoutParams(params);
                 Glide.with(context).load(imgUrl).into(holderOneImg.coverImageView);
                 break;

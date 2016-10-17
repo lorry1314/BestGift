@@ -17,7 +17,6 @@ import com.wangshiqi.bestgift.ui.fragment.profile.ProfileFragment;
 
 public class MainActivity extends AbsBaseActivity {
     private RadioGroup radioGroup;
-
     @Override
     protected int setLayout() {
         return R.layout.activity_main;
@@ -26,12 +25,10 @@ public class MainActivity extends AbsBaseActivity {
     @Override
     protected void initViews() {
         radioGroup = byView(R.id.main_radio_group);
-
     }
 
     @Override
     protected void initDatas() {
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -60,7 +57,6 @@ public class MainActivity extends AbsBaseActivity {
 
     private static boolean isExit = false;
     Handler mHandler = new Handler() {
-
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);

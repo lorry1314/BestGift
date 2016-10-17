@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import com.wangshiqi.bestgift.R;
 import com.wangshiqi.bestgift.model.bean.RotateImgBean;
 import com.wangshiqi.bestgift.ui.activity.RotateDetailActivity;
-import com.wangshiqi.bestgift.ui.activity.SearchActivity;
+import com.wangshiqi.bestgift.ui.activity.SpecialActivity;
 
 import java.util.List;
 
@@ -75,7 +75,7 @@ public class SelectionVpAdapter extends PagerAdapter {
                     intent.putExtra("type", bean.getType());
                     context.startActivity(intent);
                 }else {
-                    context.startActivity(new Intent(context, SearchActivity.class));
+                    context.startActivity(new Intent(context, SpecialActivity.class));
                 }
             }
         });

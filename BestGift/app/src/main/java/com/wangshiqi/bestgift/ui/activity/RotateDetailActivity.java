@@ -37,7 +37,7 @@ public class RotateDetailActivity extends AbsBaseActivity {
 
     @Override
     protected int setLayout() {
-        return R.layout.activity_info;
+        return R.layout.activity_rotate_detail;
     }
 
     @Override

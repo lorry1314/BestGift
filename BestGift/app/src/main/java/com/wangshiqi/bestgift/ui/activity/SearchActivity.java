@@ -1,5 +1,8 @@
 package com.wangshiqi.bestgift.ui.activity;
 
+import android.view.View;
+import android.widget.TextView;
+
 import com.wangshiqi.bestgift.R;
 
 /**
@@ -7,6 +10,9 @@ import com.wangshiqi.bestgift.R;
  * 搜索详情
  */
 public class SearchActivity extends AbsBaseActivity {
+
+    private TextView cancel;
+
     @Override
     protected int setLayout() {
         return R.layout.activity_search;
@@ -14,11 +20,16 @@ public class SearchActivity extends AbsBaseActivity {
 
     @Override
     protected void initViews() {
-
+        cancel = byView(R.id.cancel_tv);
     }
 
     @Override
     protected void initDatas() {
-
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

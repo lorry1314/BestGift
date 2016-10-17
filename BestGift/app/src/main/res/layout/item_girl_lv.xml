@@ -77,7 +77,9 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            >
             <ImageView
                 android:id="@+id/list_like_img"
                 android:layout_width="wrap_content"
@@ -94,7 +96,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_toRightOf="@id/list_like_img"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:text="111"
                 android:textColor="#000000"
                 />

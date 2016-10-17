@@ -20,7 +20,6 @@
             app:tabTextColor="#fff"
             app:tabSelectedTextColor="#fff"
             app:tabIndicatorColor="#ffffff">
-
         </android.support.design.widget.TabLayout>
         </LinearLayout>
     <RelativeLayout

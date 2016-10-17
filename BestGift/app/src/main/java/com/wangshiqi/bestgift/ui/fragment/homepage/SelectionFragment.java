@@ -210,7 +210,6 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
 
     private void startRotate() {
         handler = new Handler();
-
         if (flag) {
             rotateRunnable = new Runnable() {
                 @Override
@@ -218,7 +217,6 @@ public class SelectionFragment extends AbsFragment implements ReFlashListView.IR
                     int nowIndex = viewPager.getCurrentItem();
                     viewPager.setCurrentItem(++nowIndex);
                     handler.postDelayed(rotateRunnable, TIME);
-
                 }
             };
             handler.postDelayed(rotateRunnable, TIME);

@@ -16,12 +16,10 @@ public class WelcomeActivity extends AbsBaseActivity {
 
     @Override
     protected void initViews() {
-
     }
 
     @Override
     protected void initDatas() {
-
         new TimeTask().execute(0);
 
     }
@@ -43,7 +41,6 @@ public class WelcomeActivity extends AbsBaseActivity {
             }
             return null;
         }
-
 
         @Override
         protected void onPostExecute(String s) {
